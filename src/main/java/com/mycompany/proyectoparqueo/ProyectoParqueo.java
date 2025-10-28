@@ -3,7 +3,7 @@ import javax.swing.JOptionPane;
 public class ProyectoParqueo {
     public static void main(String[] args) {
         String contraseña;
-        do {
+        do{
             contraseña = JOptionPane.showInputDialog("Ingrese su contraseña de usuario: ");
             if ("123".equals(contraseña)) {
                 Interfaz ejemplo = new Interfaz();
@@ -12,6 +12,6 @@ public class ProyectoParqueo {
             } else {
                 JOptionPane.showMessageDialog(null, "Contraseña incorrecta. Intente de nuevo.");
             }
-        } while (true);
+        }while(true);
     }
 }
