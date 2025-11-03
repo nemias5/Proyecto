@@ -75,7 +75,7 @@ public class RegistrarEntrada extends javax.swing.JFrame {
     private void ComboMetodoDePagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboMetodoDePagoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboMetodoDePagoActionPerformed
-
+    
     public static void main(String args[]) {
 
        
