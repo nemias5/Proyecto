@@ -23,13 +23,28 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="336" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="ComboModoDePago" pref="274" max="32767" attributes="0"/>
-                  <Component id="SpinHora" max="32767" attributes="0"/>
-                  <Component id="Date" pref="274" max="32767" attributes="0"/>
-                  <Component id="ComboMetodoDePago" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="LblTitulo" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="LblHora" max="32767" attributes="0"/>
+                          <Component id="LblModoDePago" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="LblFecha" min="-2" pref="239" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="19" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="LblMetodoDePago" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="ComboModoDePago" pref="274" max="32767" attributes="0"/>
+                          <Component id="SpinHora" max="32767" attributes="0"/>
+                          <Component id="Date" pref="274" max="32767" attributes="0"/>
+                          <Component id="ComboMetodoDePago" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="217" max="-2" attributes="0"/>
           </Group>
@@ -38,14 +53,28 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-              <Component id="Date" min="-2" pref="39" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="LblTitulo" min="-2" pref="73" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="SpinHora" min="-2" pref="38" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="LblFecha" max="32767" attributes="0"/>
+                  <Component id="Date" pref="39" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="LblHora" max="32767" attributes="0"/>
+                  <Component id="SpinHora" pref="38" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-              <Component id="ComboModoDePago" min="-2" pref="40" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="LblModoDePago" max="32767" attributes="0"/>
+                  <Component id="ComboModoDePago" pref="40" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="ComboMetodoDePago" min="-2" pref="40" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="ComboMetodoDePago" pref="40" max="32767" attributes="0"/>
+                  <Component id="LblMetodoDePago" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace pref="176" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -85,6 +114,31 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LblFecha">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fecha de Entrada:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LblHora">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hora de Entrada:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LblModoDePago">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Modo de Pago: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LblMetodoDePago">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="M&#xe9;todo de Pago:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LblTitulo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Por favor, ingrese los siguientes datos:"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

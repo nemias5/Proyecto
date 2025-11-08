@@ -11,16 +11,12 @@ public class RegistrarNuevo extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RegistrarNuevo.class.getName());
 
-    /**
-     * Creates new form RegistrarNuevo
-     */
     String placa;
     public RegistrarNuevo(String placa) {
         initComponents();
         this.placa = placa;
         System.out.println("Placa recibida en RegistrarNuevo: " + placa);
         setLocationRelativeTo(null);
-        
         LblPlaca2.setText(placa);
     }
 
@@ -48,6 +44,7 @@ public class RegistrarNuevo extends javax.swing.JFrame {
         ComboArea = new javax.swing.JComboBox<>();
         TxtSaldo = new javax.swing.JTextField();
         BtmRegistrar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,41 +107,48 @@ public class RegistrarNuevo extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Este vehículo no está registrado, favor de registrarlo:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(LblArea, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                    .addComponent(LblVehiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LblSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LblCarne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LblTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LblCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LblApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LblPlaca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtmRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(LblPlaca2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(TxtNombre)
-                        .addComponent(TxtApellido)
-                        .addComponent(TxtCorreo)
-                        .addComponent(TxtTelefono)
-                        .addComponent(TxtCarne)
-                        .addComponent(ComboVehiculo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ComboArea, 0, 193, Short.MAX_VALUE)
-                        .addComponent(TxtSaldo)))
-                .addContainerGap(320, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(LblArea, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                            .addComponent(LblVehiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(LblSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(LblCarne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(LblTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(LblCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(LblApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(LblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(LblPlaca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BtmRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(LblPlaca2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(TxtNombre)
+                                .addComponent(TxtApellido)
+                                .addComponent(TxtCorreo)
+                                .addComponent(TxtTelefono)
+                                .addComponent(TxtCarne)
+                                .addComponent(ComboVehiculo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ComboArea, 0, 193, Short.MAX_VALUE)
+                                .addComponent(TxtSaldo)))))
+                .addContainerGap(275, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LblPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LblPlaca2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -255,61 +259,39 @@ public class RegistrarNuevo extends javax.swing.JFrame {
 
     private void BtmRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtmRegistrarActionPerformed
         // TODO add your handling code here:
-    String nombre = TxtNombre.getText().trim();
-    String apellido = TxtApellido.getText().trim();
-    String correo = TxtCorreo.getText().trim();
-    String telefono = TxtTelefono.getText().trim();
-    String carne = TxtCarne.getText().trim();
-    String saldo = TxtSaldo.getText().trim();
-    String tipoVehiculo = ComboVehiculo.getSelectedItem().toString().trim();
-    String tipoArea = ComboArea.getSelectedItem().toString().trim();
-
-    if(nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty() || telefono.isEmpty() 
-       || carne.isEmpty() || saldo.isEmpty() || tipoVehiculo.isEmpty() || tipoArea.isEmpty()) {
+        Alumno alumno = new Alumno();
+        Vehiculo vehiculo = new Vehiculo();
+    alumno.setNombre(TxtNombre.getText().trim());
+    alumno.setApellido(TxtApellido.getText().trim());
+    alumno.setCorreo(TxtCorreo.getText().trim());
+    alumno.setTelefono(Integer.parseInt(TxtTelefono.getText().trim()));
+    alumno.setCarnet(Integer.parseInt(TxtCarne.getText().trim()));
+    alumno.setSaldo(Double.parseDouble(TxtSaldo.getText().trim()));
+    alumno.setPlaca(placa);
+    vehiculo.setPlaca(placa);
+    vehiculo.setTipoVehiculo(ComboVehiculo.getSelectedItem().toString().trim());
+    vehiculo.setTipoArea(ComboArea.getSelectedItem().toString().trim());
+    
+    if (alumno.getNombre().isEmpty() || alumno.getApellido().isEmpty() ||
+        alumno.getCorreo().isEmpty() || vehiculo.getPlaca().isEmpty()) {
         JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
         return;
     }
-
-    try (Connection con = Conexion.conectar()) {
-        String sqlVerificar = "SELECT * FROM estudiante WHERE carne = ?";
-        try (PreparedStatement psCheck = con.prepareStatement(sqlVerificar)) {
-            psCheck.setString(1, carne);
-            ResultSet rs = psCheck.executeQuery();
-            if(rs.next()) {
-                JOptionPane.showMessageDialog(this, "El carné ya existe. Ingrese datos correctos.");
-                return;
-            }
-        }
-
-        String sqlEstudiante = "INSERT INTO estudiante (carne, nombre, apellido, telefono, correo, placa, cuenta) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        try (PreparedStatement psEst = con.prepareStatement(sqlEstudiante)) {
-            psEst.setString(1, carne);
-            psEst.setString(2, nombre);
-            psEst.setString(3, apellido);
-            psEst.setString(4, telefono);
-            psEst.setString(5, correo);
-            psEst.setString(6, placa);
-            psEst.setString(7, saldo);
-            psEst.executeUpdate();
-        }
-
-        String sqlVehiculo = "INSERT INTO vehiculos (placa, tipo_vehiculo, tipo_area) VALUES (?, ?, ?)";
-        try (PreparedStatement psVeh = con.prepareStatement(sqlVehiculo)) {
-            psVeh.setString(1, placa);
-            psVeh.setString(2, tipoVehiculo);
-            psVeh.setString(3, tipoArea);
-            psVeh.executeUpdate();
-        }
-
-        JOptionPane.showMessageDialog(this, "Vehículo registrado correctamente.");
-        new RegistrarEntrada(placa).setVisible(true);
-        this.dispose();
-    } catch (Exception e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(this, "Error al registrar vehículo: " + e.getMessage());
+    if (alumno.existeCarne(String.valueOf(alumno.getCarnet()))) {
+        JOptionPane.showMessageDialog(this, "El carné ya existe.");
+        return;
     }
-
+    if (alumno.registrarAlumno(alumno) && vehiculo.registrarVehiculo(vehiculo)) {
+        JOptionPane.showMessageDialog(this, "Registro exitoso.");
+        new RegistrarEntrada(vehiculo.getPlaca()).setVisible(true);
+        this.dispose();
+    } else {
+        JOptionPane.showMessageDialog(this, "No se pudo registrar.");
+    }
+        
     }//GEN-LAST:event_BtmRegistrarActionPerformed
+
+                                             
 
     public static void main(String args[]) {
 
@@ -335,5 +317,6 @@ public class RegistrarNuevo extends javax.swing.JFrame {
     private javax.swing.JTextField TxtNombre;
     private javax.swing.JTextField TxtSaldo;
     private javax.swing.JTextField TxtTelefono;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

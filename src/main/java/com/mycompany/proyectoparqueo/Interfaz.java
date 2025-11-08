@@ -17,7 +17,6 @@ public class Interfaz extends javax.swing.JFrame {
         initComponents();
         actualizarSemaforo();
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -157,10 +156,11 @@ private void actualizarSemaforo() {
 }
     private void BttmEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BttmEntradaActionPerformed
         // TODO add your handling code here:
+        Vehiculo vehiculo = new Vehiculo();
         String placa = JOptionPane.showInputDialog("Ingrese la placa del vehículo:");
         if (placa != null && !placa.trim().isEmpty()) {
             try {
-                if (verificarPlacaEnBD(placa)) {
+                if (vehiculo.verificarPlacaEnBD(placa)) {
                     new RegistrarEntrada(placa).setVisible(true);
                     this.dispose();
                 } else {
@@ -175,24 +175,6 @@ private void actualizarSemaforo() {
     }
     }//GEN-LAST:event_BttmEntradaActionPerformed
 
-    private boolean verificarPlacaEnBD(String placa) throws SQLException {
-        boolean existe = false;
-        Connection con = Conexion.conectar();
-        String sql = "SELECT * FROM vehiculos WHERE placa = ?";
-
-        try (PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, placa);
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                existe = true;
-            }
-            con.close();
-        } catch (SQLException e) {
-            System.out.println("Error al verificar placa: " + e.getMessage());
-        }
-        return existe;
-    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

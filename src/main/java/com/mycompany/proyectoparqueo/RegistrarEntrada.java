@@ -29,6 +29,11 @@ public class RegistrarEntrada extends javax.swing.JFrame {
         SpinHora = new javax.swing.JSpinner();
         ComboMetodoDePago = new javax.swing.JComboBox<>();
         ComboModoDePago = new javax.swing.JComboBox<>();
+        LblFecha = new javax.swing.JLabel();
+        LblHora = new javax.swing.JLabel();
+        LblModoDePago = new javax.swing.JLabel();
+        LblMetodoDePago = new javax.swing.JLabel();
+        LblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,31 +46,61 @@ public class RegistrarEntrada extends javax.swing.JFrame {
 
         ComboModoDePago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Flat", "Variable" }));
 
+        LblFecha.setText("Fecha de Entrada:");
+
+        LblHora.setText("Hora de Entrada:");
+
+        LblModoDePago.setText("Modo de Pago: ");
+
+        LblMetodoDePago.setText("Método de Pago:");
+
+        LblTitulo.setText("Por favor, ingrese los siguientes datos:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(336, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(ComboModoDePago, 0, 274, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(SpinHora)
-                        .addComponent(Date, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
-                        .addComponent(ComboMetodoDePago, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LblHora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(LblModoDePago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 19, Short.MAX_VALUE))
+                            .addComponent(LblMetodoDePago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(ComboModoDePago, 0, 274, Short.MAX_VALUE)
+                            .addComponent(SpinHora)
+                            .addComponent(Date, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                            .addComponent(ComboMetodoDePago, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(217, 217, 217))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(Date, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(LblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(SpinHora, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(LblFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Date, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(LblHora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SpinHora, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
                 .addGap(12, 12, 12)
-                .addComponent(ComboModoDePago, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(LblModoDePago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ComboModoDePago, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ComboMetodoDePago, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ComboMetodoDePago, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(LblMetodoDePago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(176, Short.MAX_VALUE))
         );
 
@@ -85,6 +120,11 @@ public class RegistrarEntrada extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboMetodoDePago;
     private javax.swing.JComboBox<String> ComboModoDePago;
     private com.toedter.calendar.JDateChooser Date;
+    private javax.swing.JLabel LblFecha;
+    private javax.swing.JLabel LblHora;
+    private javax.swing.JLabel LblMetodoDePago;
+    private javax.swing.JLabel LblModoDePago;
+    private javax.swing.JLabel LblTitulo;
     private javax.swing.JSpinner SpinHora;
     // End of variables declaration//GEN-END:variables
 }
