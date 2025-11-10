@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="LblArchivoSpot" min="-2" pref="192" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="TxtArchivoSpots" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="LblArchivoEstudiante" min="-2" pref="192" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="TxtArchivoEstudiantes" min="-2" pref="252" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="LblArchivoVehiculo" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="LblArchivoAreas" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="TxtArchivoVehiculos" max="32767" attributes="0"/>
+                          <Component id="TxtArchivoAreas" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="BtmCargarEstudiante" max="32767" attributes="0"/>
+                  <Component id="BtmCargarVehiculo" max="32767" attributes="0"/>
+                  <Component id="BtmCargarArea" max="32767" attributes="0"/>
+                  <Component id="BtmCargarSpots" pref="124" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="BtmRegresar" min="-2" pref="117" max="-2" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="BtmCargarEstudiante" pref="41" max="32767" attributes="0"/>
+                  <Component id="TxtArchivoEstudiantes" max="32767" attributes="0"/>
+                  <Component id="LblArchivoEstudiante" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="BtmCargarVehiculo" pref="41" max="32767" attributes="0"/>
+                  <Component id="TxtArchivoVehiculos" max="32767" attributes="0"/>
+                  <Component id="LblArchivoVehiculo" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="BtmCargarArea" alignment="3" pref="41" max="32767" attributes="0"/>
+                      <Component id="BtmRegresar" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="TxtArchivoAreas" max="32767" attributes="0"/>
+                  <Component id="LblArchivoAreas" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="LblArchivoSpot" max="32767" attributes="0"/>
+                  <Component id="TxtArchivoSpots" max="32767" attributes="0"/>
+                  <Component id="BtmCargarSpots" pref="41" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="69" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="LblArchivoEstudiante">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cargar Archivos de Estudiantes"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LblArchivoVehiculo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cargar Archivos de Veh&#xed;culos"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LblArchivoSpot">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cargar Archivos de Spots"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LblArchivoAreas">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cargar Archivos de Areas: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="TxtArchivoEstudiantes">
+    </Component>
+    <Component class="javax.swing.JTextField" name="TxtArchivoVehiculos">
+    </Component>
+    <Component class="javax.swing.JTextField" name="TxtArchivoAreas">
+    </Component>
+    <Component class="javax.swing.JTextField" name="TxtArchivoSpots">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtArchivoSpotsActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BtmCargarEstudiante">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cargar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtmCargarEstudianteActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BtmCargarVehiculo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cargar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtmCargarVehiculoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BtmCargarArea">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cargar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtmCargarAreaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BtmCargarSpots">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cargar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtmCargarSpotsActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BtmRegresar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Regresar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtmRegresarActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>

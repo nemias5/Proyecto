@@ -28,6 +28,8 @@ public class Interfaz extends javax.swing.JFrame {
         lblEstAuto = new javax.swing.JLabel();
         lblCatAuto = new javax.swing.JLabel();
         lblCatMoto = new javax.swing.JLabel();
+        BtmCargarArchivo = new javax.swing.JButton();
+        LblEstudiante = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,13 +48,21 @@ public class Interfaz extends javax.swing.JFrame {
         BttmSalida.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         BttmSalida.setText("Registrar Salida");
 
-        lblEstMoto.setText("kjh");
-
-        lblEstAuto.setText("lkjh");
-
         lblCatAuto.setText("kjh");
 
         lblCatMoto.setText("kjh");
+
+        BtmCargarArchivo.setText("Cargar Archivos");
+        BtmCargarArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtmCargarArchivoActionPerformed(evt);
+            }
+        });
+
+        LblEstudiante.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        LblEstudiante.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblEstudiante.setText("Parqueo Para Estudiantes:");
+        LblEstudiante.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -60,40 +70,60 @@ public class Interfaz extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(LblEncabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(146, 146, 146)
+                .addContainerGap()
+                .addComponent(BtmCargarArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(116, 116, 116)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblEstMoto, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(71, 71, 71))
-                        .addComponent(BttmEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblEstAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblCatAuto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblCatMoto, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(BttmSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(149, 149, 149))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(LblEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblEstMoto, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblEstAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54)
+                        .addComponent(lblCatAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addComponent(lblCatMoto, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BttmEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BttmSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(130, 130, 130))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addContainerGap()
+                .addComponent(BtmCargarArchivo)
+                .addGap(40, 40, 40)
                 .addComponent(LblEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BttmEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BttmSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblCatAuto, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(lblEstMoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblCatMoto, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(lblEstAuto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(LblEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblCatMoto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblEstAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblEstMoto, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(39, 39, 39))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(167, 167, 167)
+                        .addComponent(lblCatAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29))))
         );
 
         pack();
@@ -115,7 +145,7 @@ public boolean haySpotsDisponibles() {
 
 private void actualizarSemaforo() {
     try (Connection con = Conexion.conectar()) {
-        String sql = "SELECT a.NOMBRE, a.TIPO_VEHICULO, a.CAPACIDAD, COUNT(s.ID) AS libres " +
+        String sql = "SELECT a.NOMBRE, a.TIPO_VEHICULO, a.CAPACIDAD, COUNT(s.ID) AS libre " +
                      "FROM areas a " +
                      "LEFT JOIN spot s ON s.AREA = a.ID AND s.ESTADO = 'LIBRE' " +
                      "GROUP BY a.ID, a.NOMBRE, a.TIPO_VEHICULO, a.CAPACIDAD";
@@ -127,14 +157,14 @@ private void actualizarSemaforo() {
             String nombre = rs.getString("NOMBRE").trim();
             String tipo = rs.getString("TIPO_VEHICULO").trim();
             int capacidad = rs.getInt("CAPACIDAD");
-            int libres = rs.getInt("libres");
+            int libres = rs.getInt("libre");
 
             JLabel lbl = null;
 
-            if (nombre.equalsIgnoreCase("Estudiantes") && tipo.equalsIgnoreCase("Auto")) lbl = lblEstAuto;
-            else if (nombre.equalsIgnoreCase("Estudiantes") && tipo.equalsIgnoreCase("Moto")) lbl = lblEstMoto;
-            else if (nombre.equalsIgnoreCase("Catedraticos") && tipo.equalsIgnoreCase("Auto")) lbl = lblCatAuto;
-            else if (nombre.equalsIgnoreCase("Catedraticos") && tipo.equalsIgnoreCase("Moto")) lbl = lblCatMoto;
+            if (nombre.equalsIgnoreCase("Estudiante") && tipo.equalsIgnoreCase("Auto")) lbl = lblEstAuto;
+            else if (nombre.equalsIgnoreCase("Estudiante") && tipo.equalsIgnoreCase("Moto")) lbl = lblEstMoto;
+            else if (nombre.equalsIgnoreCase("Catedratico") && tipo.equalsIgnoreCase("Auto")) lbl = lblCatAuto;
+            else if (nombre.equalsIgnoreCase("Catedratico") && tipo.equalsIgnoreCase("Moto")) lbl = lblCatMoto;
 
             if (lbl != null) {
                 int porcentaje = (int) ((libres * 100.0) / capacidad); 
@@ -175,6 +205,13 @@ private void actualizarSemaforo() {
     }
     }//GEN-LAST:event_BttmEntradaActionPerformed
 
+    private void BtmCargarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtmCargarArchivoActionPerformed
+        // TODO add your handling code here:
+        CargarArchivos carga = new CargarArchivos();
+        carga.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BtmCargarArchivoActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -198,9 +235,11 @@ private void actualizarSemaforo() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtmCargarArchivo;
     private javax.swing.JButton BttmEntrada;
     private javax.swing.JButton BttmSalida;
     private javax.swing.JLabel LblEncabezado;
+    private javax.swing.JLabel LblEstudiante;
     private javax.swing.JLabel lblCatAuto;
     private javax.swing.JLabel lblCatMoto;
     private javax.swing.JLabel lblEstAuto;

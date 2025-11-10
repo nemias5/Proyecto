@@ -96,9 +96,9 @@ public class RegistrarNuevo extends javax.swing.JFrame {
             }
         });
 
-        ComboVehiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moto", "Auto", " " }));
+        ComboVehiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moto", "Auto" }));
 
-        ComboArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante ", "Catedratico", " " }));
+        ComboArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante ", "Catedratico" }));
 
         BtmRegistrar.setText("Registrar");
         BtmRegistrar.addActionListener(new java.awt.event.ActionListener() {
