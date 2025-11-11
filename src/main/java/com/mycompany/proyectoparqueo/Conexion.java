@@ -14,7 +14,7 @@ public class Conexion {
 
     public static Connection conectar() throws SQLException {
         return DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306/proyectoparqueo?useSSL=false&serverTimezone=UTC",
+            "jdbc:mysql://localhost:3306/proyectoparqueo?useSSL=false&serverTimezone=America/Guatemala",
             "root",
             "Nehemias:2005"
         );
@@ -61,7 +61,7 @@ public class Conexion {
             PreparedStatement ps = conn.prepareStatement(sql);
 
             while ((linea = br.readLine()) != null) {
-                String[] datos = linea.split("\\|");
+                String[] datos = linea.split(",");
 
                 if (datos.length >= 3) {
                     ps.setString(1, datos[0]);

@@ -26,27 +26,37 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="LblTitulo" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="BtmSiguiente" min="-2" pref="190" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="BtmCancelar" min="-2" pref="206" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="LblHora" max="32767" attributes="0"/>
-                          <Component id="LblModoDePago" max="32767" attributes="0"/>
+                          <Component id="LblTitulo" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="LblFecha" min="-2" pref="239" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="19" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="LblHora" max="32767" attributes="0"/>
+                                  <Component id="LblModoDePago" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="LblFecha" min="-2" pref="239" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="19" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="LblMetodoDePago" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="ComboModoDePago" pref="274" max="32767" attributes="0"/>
+                                  <Component id="SpinHora" max="32767" attributes="0"/>
+                                  <Component id="Date" pref="274" max="32767" attributes="0"/>
+                                  <Component id="ComboMetodoDePago" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="LblMetodoDePago" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="ComboModoDePago" pref="274" max="32767" attributes="0"/>
-                          <Component id="SpinHora" max="32767" attributes="0"/>
-                          <Component id="Date" pref="274" max="32767" attributes="0"/>
-                          <Component id="ComboMetodoDePago" max="32767" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="-2" pref="217" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="217" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -75,7 +85,12 @@
                   <Component id="ComboMetodoDePago" pref="40" max="32767" attributes="0"/>
                   <Component id="LblMetodoDePago" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="176" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="BtmSiguiente" pref="52" max="32767" attributes="0"/>
+                  <Component id="BtmCancelar" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="84" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -91,7 +106,7 @@
           <StringArray count="3">
             <StringItem index="0" value="Efectivo"/>
             <StringItem index="1" value="Tarjeta"/>
-            <StringItem index="2" value="Saldo"/>
+            <StringItem index="2" value="Cuenta"/>
           </StringArray>
         </Property>
       </Properties>
@@ -139,6 +154,22 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Por favor, ingrese los siguientes datos:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="BtmSiguiente">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Siguiente"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtmSiguienteActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BtmCancelar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtmCancelarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
