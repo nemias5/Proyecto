@@ -10,10 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author ngonz
- */
 public class Vehiculo{
     public String placa;
     public String tipoVehiculo;
@@ -46,12 +42,13 @@ public class Vehiculo{
         this.tipoArea = tipoArea;
     }
     
-    public boolean verificarPlacaEnBD(String placa) throws SQLException {
+    public boolean verificarPlacaEnBD(String placa){
         boolean existe = false;
-        Connection con = Conexion.conectar();
         String sql = "SELECT * FROM vehiculos WHERE placa = ?";
 
-        try (PreparedStatement ps = con.prepareStatement(sql)) {
+        try (Connection con = Conexion.conectar();
+            PreparedStatement ps = con.prepareStatement(sql)) {
+            
             ps.setString(1, placa);
             ResultSet rs = ps.executeQuery();
 
