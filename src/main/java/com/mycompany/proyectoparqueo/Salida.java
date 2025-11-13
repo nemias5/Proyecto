@@ -167,6 +167,65 @@ public class Salida {
         return false;
     }
 }
+    public void reingresoFlat(String ticket) {
+    try (Connection con = Conexion.conectar()) {
+
+        // 1️⃣ Verificar si el ticket existe y si fue modo "FLAT"
+        String sql = "SELECT modo, spot, fecha_salida FROM historico WHERE ticket = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, ticket);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            String modo = rs.getString("modo");
+            String idSpot = rs.getString("spot");
+            Timestamp fechaSalida = rs.getTimestamp("fecha_salida");
+
+            // 2️⃣ Si el modo no es FLAT, no permitir reingreso
+            if (!modo.equalsIgnoreCase("FLAT")) {
+                JOptionPane.showMessageDialog(null, 
+                    "Este ticket pertenece a un usuario con tarifa VARIABLE. No puede reingresar.",
+                    "Reingreso no permitido", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // 3️⃣ Si el modo es FLAT, verificar si ya pasó el tiempo límite
+            if (fechaSalida != null) {
+                LocalDateTime salida = fechaSalida.toLocalDateTime();
+                long horas = ChronoUnit.HOURS.between(salida, LocalDateTime.now());
+
+                if (horas >= 2) {
+                    // 🔹 Han pasado más de 2 horas → liberar spot
+                    actualizarSpot(idSpot, "LIBRE");
+                    JOptionPane.showMessageDialog(null, 
+                        "Han pasado más de 2 horas desde la salida.\nEl spot se liberó automáticamente.",
+                        "Spot liberado", JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                } else {
+                    // 🔹 Aún está dentro del rango permitido → poner spot en PENDIENTE
+                    actualizarSpot(idSpot, "OCUPADO");
+                    JOptionPane.showMessageDialog(null, 
+                        "El vehículo puede reingresar. El spot fue marcado como Ocupado.",
+                        "Reingreso permitido", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, 
+                    "El ticket no tiene una fecha de salida registrada.",
+                    "Error de datos", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, 
+                "No se encontró ningún registro con el ticket ingresado.",
+                "Ticket no encontrado", JOptionPane.ERROR_MESSAGE);
+        }
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, 
+            "Error al procesar el reingreso: " + e.getMessage(),
+            "Error SQL", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
 
     
 }

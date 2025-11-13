@@ -98,6 +98,11 @@ public class Interfaz extends javax.swing.JFrame {
 
         BtmReingreso.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         BtmReingreso.setText("REINGRESO");
+        BtmReingreso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtmReingresoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -304,6 +309,17 @@ public void actualizarSemaforo() {
         e.printStackTrace();
     }
     }//GEN-LAST:event_BttmSalidaActionPerformed
+
+    private void BtmReingresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtmReingresoActionPerformed
+        // TODO add your handling code here:
+        
+        String ticket = JOptionPane.showInputDialog("Ingrese el número de ticket:");
+        Salida reingreso = new Salida();
+        if (ticket != null && !ticket.trim().isEmpty()) {
+            reingreso.reingresoFlat(ticket);
+        }
+
+    }//GEN-LAST:event_BtmReingresoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

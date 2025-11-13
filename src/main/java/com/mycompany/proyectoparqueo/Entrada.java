@@ -7,7 +7,7 @@ public class Entrada {
     public boolean entrada(String placa, String modoPago, String metodoPago){
         try (Connection con = Conexion.conectar()){
             String ticket = "t-00001";
-            PreparedStatement ps = con.prepareStatement("SELECT ticket from historico ORDER BY ticket DESC LIMIT 1");
+            PreparedStatement ps = con.prepareStatement("SELECT ticket FROM historico ORDER BY CAST(SUBSTRING(ticket, 3) AS UNSIGNED) DESC LIMIT 1");
             ResultSet rs = ps.executeQuery();
             if (rs.next()){
                 int num = Integer.parseInt(rs.getString(1).substring(2));
