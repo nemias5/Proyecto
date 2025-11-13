@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class Alumno {
+public class Usuario {
     public int carnet;
     public String nombre;
     public String apellido;
@@ -16,7 +16,7 @@ public class Alumno {
     public String placa;
     public double saldo;
 
-    public Alumno() {
+    public Usuario() {
     }
 
     public int getCarnet() {
@@ -79,7 +79,7 @@ public class Alumno {
         boolean existe = false;
         String sql = "SELECT * FROM estudiante WHERE carne = ?";
         try (Connection con = Conexion.conectar();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+            PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setString(1, carne);
             ResultSet rs = ps.executeQuery();
@@ -91,18 +91,18 @@ public class Alumno {
         return existe;
     }
     
-    public boolean registrarAlumno(Alumno alumno){
+    public boolean registrarAlumno(Usuario alumno){
         try (Connection con = Conexion.conectar()) {
-            String sqlVehiculo = "INSERT INTO estudiante (carne, nombre, apellido, telefono, correo, placa, cuenta) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            try (PreparedStatement psA = con.prepareStatement(sqlVehiculo)) {
-                psA.setInt(1, alumno.getCarnet());
-                psA.setString(2, alumno.getNombre());
-                psA.setString(3, alumno.getApellido());
-                psA.setInt(4, alumno.getTelefono());
-                psA.setString(5, alumno.getCorreo());
-                psA.setString(6, alumno.getPlaca());
-                psA.setDouble(7, alumno.getSaldo());
-                psA.executeUpdate();
+            String sql = "INSERT INTO estudiante (carne, nombre, apellido, telefono, correo, placa, cuenta) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            try (PreparedStatement psU = con.prepareStatement(sql)) {
+                psU.setInt(1, alumno.getCarnet());
+                psU.setString(2, alumno.getNombre());
+                psU.setString(3, alumno.getApellido());
+                psU.setInt(4, alumno.getTelefono());
+                psU.setString(5, alumno.getCorreo());
+                psU.setString(6, alumno.getPlaca());
+                psU.setDouble(7, alumno.getSaldo());
+                psU.executeUpdate();
             }
 
             return true;

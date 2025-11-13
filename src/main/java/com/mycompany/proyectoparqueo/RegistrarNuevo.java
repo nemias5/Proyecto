@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.proyectoparqueo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -259,29 +255,29 @@ public class RegistrarNuevo extends javax.swing.JFrame {
 
     private void BtmRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtmRegistrarActionPerformed
         // TODO add your handling code here:
-        Alumno alumno = new Alumno();
+        Usuario nuevo = new Usuario();
         Vehiculo vehiculo = new Vehiculo();
-    alumno.setNombre(TxtNombre.getText().trim());
-    alumno.setApellido(TxtApellido.getText().trim());
-    alumno.setCorreo(TxtCorreo.getText().trim());
-    alumno.setTelefono(Integer.parseInt(TxtTelefono.getText().trim()));
-    alumno.setCarnet(Integer.parseInt(TxtCarne.getText().trim()));
-    alumno.setSaldo(Double.parseDouble(TxtSaldo.getText().trim()));
-    alumno.setPlaca(placa);
-    vehiculo.setPlaca(placa);
-    vehiculo.setTipoVehiculo(ComboVehiculo.getSelectedItem().toString().trim());
-    vehiculo.setTipoArea(ComboArea.getSelectedItem().toString().trim());
+        nuevo.setNombre(TxtNombre.getText().trim());
+        nuevo.setApellido(TxtApellido.getText().trim());
+        nuevo.setCorreo(TxtCorreo.getText().trim());
+        nuevo.setTelefono(Integer.parseInt(TxtTelefono.getText().trim()));
+        nuevo.setCarnet(Integer.parseInt(TxtCarne.getText().trim()));
+        nuevo.setSaldo(Double.parseDouble(TxtSaldo.getText().trim()));
+        nuevo.setPlaca(placa);
+        vehiculo.setPlaca(placa);
+        vehiculo.setTipoVehiculo(ComboVehiculo.getSelectedItem().toString().trim());
+        vehiculo.setTipoArea(ComboArea.getSelectedItem().toString().trim());
     
-    if (alumno.getNombre().isEmpty() || alumno.getApellido().isEmpty() ||
-        alumno.getCorreo().isEmpty() || vehiculo.getPlaca().isEmpty()) {
+    if (nuevo.getNombre().isEmpty() || nuevo.getApellido().isEmpty() ||
+        nuevo.getCorreo().isEmpty() || vehiculo.getPlaca().isEmpty()) {
         JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
         return;
     }
-    if (alumno.existeCarne(String.valueOf(alumno.getCarnet()))) {
+    if (nuevo.existeCarne(String.valueOf(nuevo.getCarnet()))) {
         JOptionPane.showMessageDialog(this, "El carné ya existe.");
         return;
     }
-    if (alumno.registrarAlumno(alumno) && vehiculo.registrarVehiculo(vehiculo)) {
+    if (nuevo.registrarAlumno(nuevo) && vehiculo.registrarVehiculo(vehiculo)) {
         JOptionPane.showMessageDialog(this, "Registro exitoso.");
         new RegistrarEntrada(vehiculo.getPlaca()).setVisible(true);
         this.dispose();

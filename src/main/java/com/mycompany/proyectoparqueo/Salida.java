@@ -130,8 +130,43 @@ public class Salida {
 }
 
     
-    public boolean salidaFlat(String ticket){
+    public boolean salidaFlat(String ticket) {
+    try (Connection con = Conexion.conectar()) {
+
+        // 🔹 Obtener el spot del ticket
+        String sql = "SELECT spot FROM historico WHERE ticket = ?";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, ticket.trim());
+            try (ResultSet rs = ps.executeQuery()) {
+                if (!rs.next()) {
+                    JOptionPane.showMessageDialog(null, "No existe el ticket ingresado");
+                    return false;
+                }
+
+                String idSpot = rs.getString("spot");
+
+                // 🔹 Actualizar fecha de salida y poner el spot en pendiente
+                String sqlUpdate = "UPDATE historico SET fecha_salida = NOW() WHERE ticket = ?";
+                try (PreparedStatement psUpdate = con.prepareStatement(sqlUpdate)) {
+                    psUpdate.setString(1, ticket);
+                    psUpdate.executeUpdate();
+                }
+
+                // 🔹 Cambiar el estado del spot a pendiente
+                actualizarSpot(idSpot, "pendiente");
+
+                JOptionPane.showMessageDialog(null,
+                        "Salida registrada. Tiene 2 horas para reingresar, luego el espacio será liberado.");
+                return true;
+            }
+        }
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al registrar salida: " + e.getMessage());
+        e.printStackTrace();
         return false;
     }
+}
+
     
 }

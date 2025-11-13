@@ -16,7 +16,7 @@ public class Interfaz extends javax.swing.JFrame {
     public Interfaz() {
         initComponents();
         actualizarSemaforo();
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null);//centra la interfaz
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

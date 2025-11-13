@@ -2,6 +2,8 @@
 package com.mycompany.proyectoparqueo;
 import java.awt.*;
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import javax.swing.*;
 public class MapaParqueo extends javax.swing.JFrame {
     
@@ -42,9 +44,43 @@ public MapaParqueo() {
             btn.setForeground(Color.BLACK);
 
             btn.addActionListener(e -> {
-                JOptionPane.showMessageDialog(this,
-                        "Espacio: " + id + "\nEstado: " + estado,
-                        "Detalles del espacio", JOptionPane.INFORMATION_MESSAGE);
+                try (Connection con2 = Conexion.conectar()) {
+        // Consultar el estado más reciente de ese spot
+        String sql2 = "SELECT fecha_salida, ticket FROM historico WHERE spot = ? ORDER BY fecha_salida DESC LIMIT 1";
+        PreparedStatement ps2 = con2.prepareStatement(sql2);
+        ps2.setString(1, id);
+        ResultSet rs2 = ps2.executeQuery();
+
+        String mensaje = "Espacio: " + id + "\nEstado: " + estado;
+
+        if (estado.equalsIgnoreCase("PENDIENTE") && rs2.next()) {
+            Timestamp fechaSalida = rs2.getTimestamp("fecha_salida");
+            if (fechaSalida != null) {
+                LocalDateTime salida = fechaSalida.toLocalDateTime();
+                long minutosPasados = ChronoUnit.MINUTES.between(salida, LocalDateTime.now());
+                long minutosRestantes = 120 - minutosPasados; // 2 horas = 120 min
+
+                if (minutosPasados >= 120) {
+                    // 🔹 Ya pasaron 2 horas, liberar automáticamente
+                    String liberarSQL = "UPDATE spot SET estado = 'LIBRE' WHERE id = ?";
+                    PreparedStatement psLiberar = con2.prepareStatement(liberarSQL);
+                    psLiberar.setString(1, id);
+                    psLiberar.executeUpdate();
+
+                    mensaje += "\n\n⏰ El tiempo expiró (más de 2 horas). El spot se liberó automáticamente.";
+                    btn.setBackground(Color.GREEN);
+                } else {
+                    mensaje += "\n\n⏱️ Tiempo restante: " + minutosRestantes + " minutos.";
+                }
+            }
+        }
+
+        JOptionPane.showMessageDialog(this, mensaje, "Detalles del espacio", JOptionPane.INFORMATION_MESSAGE);
+
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al consultar detalles del espacio");
+    }
             });
 
             panelMapa.add(btn);
