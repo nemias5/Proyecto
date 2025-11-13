@@ -16,6 +16,7 @@ public class Interfaz extends javax.swing.JFrame {
     public Interfaz() {
         initComponents();
         actualizarSemaforo();
+        setLocationRelativeTo(null);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -266,16 +267,42 @@ public void actualizarSemaforo() {
 
     private void BttmSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BttmSalidaActionPerformed
         // TODO add your handling code here:
-        Salida salida = new Salida();
+
         String ticket = JOptionPane.showInputDialog("Ingrese el ticket");
         
-        boolean exito = salida.salida(ticket);
+    try (Connection con = Conexion.conectar()) {
+        String sql = "SELECT modo FROM historico WHERE ticket = ?";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, ticket);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    String modoPago = rs.getString("modo");
 
-        if (exito) {
-            JOptionPane.showMessageDialog(this, "Salida registrada exitosamente.");
-        } else {
-            JOptionPane.showMessageDialog(this, "Error al registrar salida o ticket no válido.");
-        }      
+                    if (modoPago.equalsIgnoreCase("flat")) {
+                        // 🔹 Si fue modo flat, llama al método salidaFlat
+                        Salida salida = new Salida();
+                        salida.salidaFlat(ticket); 
+                        // Puedes cambiar el nombre del método según el que ya tengas implementado
+
+                    } else if (modoPago.equalsIgnoreCase("variable")) {
+                        // 🔹 Si fue modo variable, abrir la interfaz para elegir método de pago
+                        RegistrarSalida ventanaMetodo = new RegistrarSalida(ticket);
+                        ventanaMetodo.setVisible(true);
+                        this.dispose(); // opcional, si querés cerrar la ventana actual
+
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Modo de pago no reconocido en la base de datos.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se encontró el ticket ingresado.");
+                }
+            }
+        }
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Error al verificar el ticket: " + e.getMessage());
+        e.printStackTrace();
+    }
     }//GEN-LAST:event_BttmSalidaActionPerformed
 
     public static void main(String args[]) {

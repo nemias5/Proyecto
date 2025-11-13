@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 import java.time.*;
 
 public class Entrada {
-    public static boolean entrada(String placa, String modoPago, String metodoPago){
+    public boolean entrada(String placa, String modoPago, String metodoPago){
         try (Connection con = Conexion.conectar()){
             String ticket = "t-00001";
             PreparedStatement ps = con.prepareStatement("SELECT ticket from historico ORDER BY ticket DESC LIMIT 1");
@@ -42,7 +42,7 @@ public class Entrada {
             if (metodoPago.trim().equalsIgnoreCase("cuenta") && modoPago.trim().equalsIgnoreCase("flat")) {
                 ps = con.prepareStatement("SELECT cuenta FROM estudiante WHERE placa = ?");
                 ps.setString(1, placa.trim().toUpperCase());
-            rs = ps.executeQuery();
+                rs = ps.executeQuery();
 
                 if (rs.next()) {
                 double saldo = rs.getDouble("cuenta");
@@ -53,9 +53,10 @@ public class Entrada {
                         rs.close();
                     ps.close();
 
-                        ps = con.prepareStatement("UPDATE estudiante SET cuenta = cuenta - ? WHERE placa = ?");
+                    ps = con.prepareStatement("UPDATE estudiante SET cuenta = cuenta - ? WHERE placa = ?");
                     ps.setDouble(1, monto);
                     ps.setString(2, placa.trim().toUpperCase());
+                    ps.executeUpdate();
                     }
                 }
             }
@@ -68,7 +69,11 @@ public class Entrada {
             ps.setTimestamp(5, new java.sql.Timestamp(System.currentTimeMillis()));
             ps.setTimestamp(6, null);
             ps.setString(7, modoPago);
-            ps.setString(8, metodoPago);
+            if (modoPago.equalsIgnoreCase("variable")){
+                ps.setString(8, null);
+            } else {
+                ps.setString(8, metodoPago);
+            }
             ps.setDouble(9, monto);
             ps.executeUpdate();
 
@@ -77,6 +82,10 @@ public class Entrada {
             ps.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Entrada registrada correctamente.\nTicket: " + ticket);
+            
+            Interfaz regresar = new Interfaz();
+            regresar.setVisible(true);
+            
             return true;
             
         } catch (SQLException e){

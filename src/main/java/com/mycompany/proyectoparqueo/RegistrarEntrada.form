@@ -43,14 +43,12 @@
                                       <Component id="LblFecha" min="-2" pref="239" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="19" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="LblMetodoDePago" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="ComboModoDePago" pref="274" max="32767" attributes="0"/>
                                   <Component id="SpinHora" max="32767" attributes="0"/>
                                   <Component id="Date" pref="274" max="32767" attributes="0"/>
-                                  <Component id="ComboMetodoDePago" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -80,12 +78,7 @@
                   <Component id="LblModoDePago" max="32767" attributes="0"/>
                   <Component id="ComboModoDePago" pref="40" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="ComboMetodoDePago" pref="40" max="32767" attributes="0"/>
-                  <Component id="LblMetodoDePago" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="BtmSiguiente" pref="52" max="32767" attributes="0"/>
                   <Component id="BtmCancelar" max="32767" attributes="0"/>
@@ -99,23 +92,6 @@
     <Component class="com.toedter.calendar.JDateChooser" name="Date">
     </Component>
     <Component class="javax.swing.JSpinner" name="SpinHora">
-    </Component>
-    <Component class="javax.swing.JComboBox" name="ComboMetodoDePago">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Efectivo"/>
-            <StringItem index="1" value="Tarjeta"/>
-            <StringItem index="2" value="Cuenta"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ComboMetodoDePagoActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="ComboModoDePago">
       <Properties>
@@ -143,11 +119,6 @@
     <Component class="javax.swing.JLabel" name="LblModoDePago">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modo de Pago: "/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="LblMetodoDePago">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="M&#xe9;todo de Pago:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="LblTitulo">

@@ -23,24 +23,15 @@ public class RegistrarEntrada extends javax.swing.JFrame {
 
         Date = new com.toedter.calendar.JDateChooser();
         SpinHora = new javax.swing.JSpinner();
-        ComboMetodoDePago = new javax.swing.JComboBox<>();
         ComboModoDePago = new javax.swing.JComboBox<>();
         LblFecha = new javax.swing.JLabel();
         LblHora = new javax.swing.JLabel();
         LblModoDePago = new javax.swing.JLabel();
-        LblMetodoDePago = new javax.swing.JLabel();
         LblTitulo = new javax.swing.JLabel();
         BtmSiguiente = new javax.swing.JButton();
         BtmCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        ComboMetodoDePago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Tarjeta", "Cuenta" }));
-        ComboMetodoDePago.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboMetodoDePagoActionPerformed(evt);
-            }
-        });
 
         ComboModoDePago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Flat", "Variable" }));
 
@@ -49,8 +40,6 @@ public class RegistrarEntrada extends javax.swing.JFrame {
         LblHora.setText("Hora de Entrada:");
 
         LblModoDePago.setText("Modo de Pago: ");
-
-        LblMetodoDePago.setText("Método de Pago:");
 
         LblTitulo.setText("Por favor, ingrese los siguientes datos:");
 
@@ -89,14 +78,12 @@ public class RegistrarEntrada extends javax.swing.JFrame {
                                     .addComponent(LblModoDePago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(LblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 19, Short.MAX_VALUE))
-                                    .addComponent(LblMetodoDePago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(0, 19, Short.MAX_VALUE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(ComboModoDePago, 0, 274, Short.MAX_VALUE)
                                     .addComponent(SpinHora)
-                                    .addComponent(Date, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
-                                    .addComponent(ComboMetodoDePago, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(Date, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE))))
                         .addGap(217, 217, 217))))
         );
         layout.setVerticalGroup(
@@ -116,11 +103,7 @@ public class RegistrarEntrada extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(LblModoDePago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ComboModoDePago, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ComboMetodoDePago, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(LblMetodoDePago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(40, 40, 40)
+                .addGap(92, 92, 92)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BtmSiguiente, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                     .addComponent(BtmCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -129,11 +112,6 @@ public class RegistrarEntrada extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void ComboMetodoDePagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboMetodoDePagoActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_ComboMetodoDePagoActionPerformed
 
     private void BtmCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtmCancelarActionPerformed
         // TODO add your handling code here:
@@ -144,11 +122,18 @@ public class RegistrarEntrada extends javax.swing.JFrame {
 
     private void BtmSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtmSiguienteActionPerformed
         // TODO add your handling code here:
-        
         String modoPago = ComboModoDePago.getSelectedItem().toString();
-        String metodoPago = ComboMetodoDePago.getSelectedItem().toString();
-
-        Entrada.entrada(placa, modoPago, metodoPago);
+        if(modoPago.equalsIgnoreCase("variable")){
+            String metodoPago = "";
+            Entrada registro = new Entrada();
+            registro.entrada(placa, modoPago, metodoPago);
+            this.dispose();
+        } else if (modoPago.equalsIgnoreCase("flat")) {
+            ElegirMetodoDePago elegir = new ElegirMetodoDePago(placa, modoPago);
+            elegir.setVisible(true);
+            this.dispose();
+        }
+        
     }//GEN-LAST:event_BtmSiguienteActionPerformed
     
     public static void main(String args[]) {
@@ -159,12 +144,10 @@ public class RegistrarEntrada extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtmCancelar;
     private javax.swing.JButton BtmSiguiente;
-    private javax.swing.JComboBox<String> ComboMetodoDePago;
     private javax.swing.JComboBox<String> ComboModoDePago;
     private com.toedter.calendar.JDateChooser Date;
     private javax.swing.JLabel LblFecha;
     private javax.swing.JLabel LblHora;
-    private javax.swing.JLabel LblMetodoDePago;
     private javax.swing.JLabel LblModoDePago;
     private javax.swing.JLabel LblTitulo;
     private javax.swing.JSpinner SpinHora;
