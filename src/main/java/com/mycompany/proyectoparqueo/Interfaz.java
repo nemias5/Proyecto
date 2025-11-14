@@ -38,6 +38,7 @@ public class Interfaz extends javax.swing.JFrame {
         BtmMapa = new javax.swing.JButton();
         BtmReingreso = new javax.swing.JButton();
         BtmSalir = new javax.swing.JButton();
+        BtmReporte = new javax.swing.JButton();
         LblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,7 +52,7 @@ public class Interfaz extends javax.swing.JFrame {
         LblEncabezado.setForeground(new java.awt.Color(255, 255, 255));
         LblEncabezado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblEncabezado.setText("Bienvenido a Park Plus");
-        getContentPane().add(LblEncabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 17, 851, 107));
+        getContentPane().add(LblEncabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 17, 690, 107));
 
         BttmEntrada.setBackground(new java.awt.Color(51, 0, 0));
         BttmEntrada.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
@@ -128,7 +129,7 @@ public class Interfaz extends javax.swing.JFrame {
                 BtmMapaActionPerformed(evt);
             }
         });
-        getContentPane().add(BtmMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 240, 50));
+        getContentPane().add(BtmMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 130, 50));
 
         BtmReingreso.setBackground(new java.awt.Color(51, 0, 0));
         BtmReingreso.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
@@ -153,6 +154,18 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BtmSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 420, 210, 50));
+
+        BtmReporte.setBackground(new java.awt.Color(255, 255, 255));
+        BtmReporte.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        BtmReporte.setForeground(new java.awt.Color(51, 0, 0));
+        BtmReporte.setText("Generar Reporte");
+        BtmReporte.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 0, 0), new java.awt.Color(51, 0, 0), new java.awt.Color(51, 0, 0), new java.awt.Color(51, 0, 0)));
+        BtmReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtmReporteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtmReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 420, 220, 50));
 
         LblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.png"))); // NOI18N
         getContentPane().add(LblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 0, 930, 510));
@@ -430,6 +443,13 @@ try (Connection con = Conexion.conectar()) {
         System.exit(0);
     }//GEN-LAST:event_BtmSalirActionPerformed
 
+    private void BtmReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtmReporteActionPerformed
+        // TODO add your handling code here:
+        ReportePorFecha ingresar = new ReportePorFecha();
+        ingresar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BtmReporteActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -456,6 +476,7 @@ try (Connection con = Conexion.conectar()) {
     private javax.swing.JButton BtmCargarArchivo;
     private javax.swing.JButton BtmMapa;
     private javax.swing.JButton BtmReingreso;
+    private javax.swing.JButton BtmReporte;
     private javax.swing.JButton BtmSalir;
     private javax.swing.JButton BttmEntrada;
     private javax.swing.JButton BttmSalida;
