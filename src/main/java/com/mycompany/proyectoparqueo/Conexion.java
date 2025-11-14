@@ -91,7 +91,7 @@ public class Conexion {
             PreparedStatement ps = conn.prepareStatement(sql);
             
             while ((linea = br.readLine())!=null){
-                String [] datos = linea.split("\\|");
+                String [] datos = linea.split(",");
                 
                 if (datos.length >=4){
                     ps.setString(1, datos[0]);

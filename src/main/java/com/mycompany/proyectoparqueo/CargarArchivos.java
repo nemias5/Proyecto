@@ -325,7 +325,7 @@ public class CargarArchivos extends javax.swing.JFrame {
         br.readLine();
         String linea;
         while ((linea = br.readLine()) != null) {
-            String[] datos = linea.split("\\|");
+            String[] datos = linea.split(",");
             if (datos.length >= 4) {
                 modelo.addRow(new Object[]{
                         datos[0], datos[1], datos[2],

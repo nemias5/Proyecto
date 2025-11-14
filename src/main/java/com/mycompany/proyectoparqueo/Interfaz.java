@@ -318,9 +318,7 @@ try (Connection con = Conexion.conectar()) {
     String sql = "SELECT estado FROM historico WHERE placa = ?";
     try (PreparedStatement ps = con.prepareStatement(sql)) {
         ps.setString(1, placa);
-
         try (ResultSet rs = ps.executeQuery()) {
-
             if (rs.next()) {
 
                 String estadoActual = rs.getString("estado");
@@ -371,6 +369,11 @@ try (Connection con = Conexion.conectar()) {
 
         String ticket = JOptionPane.showInputDialog("Ingrese el ticket");
         
+        if(ticket == null || ticket.trim().isEmpty()){
+        JOptionPane.showMessageDialog(this, "Debe ingresar un ticket válido.");
+        return;
+    }
+        
     try (Connection con = Conexion.conectar()) {
         String sql = "SELECT modo, estado FROM historico WHERE ticket = ?";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
@@ -398,11 +401,7 @@ try (Connection con = Conexion.conectar()) {
                         }
                         
 
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Modo de pago no reconocido en la base de datos.");
                     }
-                } else {
-                    JOptionPane.showMessageDialog(this, "No se encontró el ticket ingresado.");
                 }
             }
         }
@@ -418,8 +417,10 @@ try (Connection con = Conexion.conectar()) {
         
         String ticket = JOptionPane.showInputDialog("Ingrese el número de ticket:");
         Salida reingreso = new Salida();
-        if (ticket != null && !ticket.trim().isEmpty()) {
-            reingreso.reingresoFlat(ticket);
+        reingreso.reingresoFlat(ticket);
+        if (ticket == null || ticket.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un ticket válido. ");
+            return;
         }
 
     }//GEN-LAST:event_BtmReingresoActionPerformed
