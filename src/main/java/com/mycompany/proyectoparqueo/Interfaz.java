@@ -15,7 +15,10 @@ public class Interfaz extends javax.swing.JFrame {
 
     public Interfaz() {
         initComponents();
-        actualizarSemaforo();
+        indicadorEstMoto();
+        indicadorEstAuto();
+        indicadorCatMoto();
+        indicadorCatAuto();
         setLocationRelativeTo(null);//centra la interfaz
     }
     @SuppressWarnings("unchecked")
@@ -62,9 +65,11 @@ public class Interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(BttmEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 145, 242, 65));
 
-        BttmSalida.setBackground(new java.awt.Color(0, 51, 51));
-        BttmSalida.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        BttmSalida.setBackground(new java.awt.Color(51, 0, 0));
+        BttmSalida.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        BttmSalida.setForeground(new java.awt.Color(255, 255, 255));
         BttmSalida.setText("SALIDA");
+        BttmSalida.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.red, java.awt.Color.red, java.awt.Color.red, java.awt.Color.red));
         BttmSalida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BttmSalidaActionPerformed(evt);
@@ -79,48 +84,57 @@ public class Interfaz extends javax.swing.JFrame {
         getContentPane().add(lblEstAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(604, 205, 171, 40));
 
         lblCatAuto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(lblCatAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(403, 318, 173, 40));
+        lblCatAuto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(lblCatAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 173, 40));
 
         lblCatMoto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(lblCatMoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(613, 318, 173, 40));
+        getContentPane().add(lblCatMoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 173, 40));
 
-        BtmCargarArchivo.setBackground(new java.awt.Color(51, 0, 0));
-        BtmCargarArchivo.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        BtmCargarArchivo.setForeground(new java.awt.Color(255, 255, 255));
+        BtmCargarArchivo.setBackground(new java.awt.Color(255, 255, 255));
+        BtmCargarArchivo.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        BtmCargarArchivo.setForeground(new java.awt.Color(51, 0, 0));
         BtmCargarArchivo.setText("Cargar Archivos");
-        BtmCargarArchivo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtmCargarArchivo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 0, 0), new java.awt.Color(51, 0, 0), new java.awt.Color(51, 0, 0), new java.awt.Color(51, 0, 0)));
         BtmCargarArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtmCargarArchivoActionPerformed(evt);
             }
         });
-        getContentPane().add(BtmCargarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, 187, 37));
+        getContentPane().add(BtmCargarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, 240, 50));
 
-        LblEstudiante.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        LblEstudiante.setBackground(new java.awt.Color(51, 0, 0));
+        LblEstudiante.setFont(new java.awt.Font("Cooper Black", 0, 20)); // NOI18N
+        LblEstudiante.setForeground(new java.awt.Color(255, 255, 255));
         LblEstudiante.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LblEstudiante.setText("Parqueo Para Estudiantes:");
+        LblEstudiante.setText("Parqueo Para Alumnos:");
         LblEstudiante.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(LblEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(478, 257, 242, 42));
+        getContentPane().add(LblEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 310, 42));
 
-        LblCatedraticos.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        LblCatedraticos.setBackground(new java.awt.Color(51, 0, 0));
+        LblCatedraticos.setFont(new java.awt.Font("Cooper Black", 0, 20)); // NOI18N
+        LblCatedraticos.setForeground(new java.awt.Color(255, 255, 255));
         LblCatedraticos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblCatedraticos.setText("Parqueo Para Catedraticos:");
         LblCatedraticos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(LblCatedraticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 145, 242, 42));
+        getContentPane().add(LblCatedraticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, 310, 42));
 
+        BtmMapa.setBackground(new java.awt.Color(255, 255, 255));
+        BtmMapa.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        BtmMapa.setForeground(new java.awt.Color(51, 0, 0));
         BtmMapa.setText("Mapa");
+        BtmMapa.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 0, 0), new java.awt.Color(51, 0, 0), new java.awt.Color(51, 0, 0), new java.awt.Color(51, 0, 0)));
         BtmMapa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtmMapaActionPerformed(evt);
             }
         });
-        getContentPane().add(BtmMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, 127, 43));
+        getContentPane().add(BtmMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 240, 50));
 
         BtmReingreso.setBackground(new java.awt.Color(51, 0, 0));
         BtmReingreso.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
         BtmReingreso.setForeground(new java.awt.Color(255, 255, 255));
         BtmReingreso.setText("REINGRESO");
-        BtmReingreso.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        BtmReingreso.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.red, java.awt.Color.red, java.awt.Color.red, java.awt.Color.red));
         BtmReingreso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtmReingresoActionPerformed(evt);
@@ -128,13 +142,17 @@ public class Interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(BtmReingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 222, 242, 65));
 
-        BtmSalir.setText("Cerar");
+        BtmSalir.setBackground(new java.awt.Color(255, 255, 255));
+        BtmSalir.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        BtmSalir.setForeground(new java.awt.Color(51, 0, 0));
+        BtmSalir.setText("Salir del Programa");
+        BtmSalir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 0, 0), new java.awt.Color(51, 0, 0), new java.awt.Color(51, 0, 0), new java.awt.Color(51, 0, 0)));
         BtmSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtmSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(BtmSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 410, 140, 50));
+        getContentPane().add(BtmSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 420, 210, 50));
 
         LblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.png"))); // NOI18N
         getContentPane().add(LblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 0, 930, 510));
@@ -156,42 +174,133 @@ public boolean haySpotsDisponibles() {
         return disponible;
     }
 
-public void actualizarSemaforo() {
-    try (Connection con = Conexion.conectar()) {
-        String sql = "SELECT a.NOMBRE, a.TIPO_VEHICULO, a.CAPACIDAD, COUNT(s.ID) AS libre " +
+public void indicadorEstMoto() {
+    String sql = "SELECT a.NOMBRE, a.TIPO_VEHICULO, a.CAPACIDAD, " +
+                     "COUNT(s.ID) AS libres " +
                      "FROM areas a " +
                      "LEFT JOIN spot s ON s.AREA = a.ID AND s.ESTADO = 'LIBRE' " +
-                     "GROUP BY a.ID, a.NOMBRE, a.TIPO_VEHICULO, a.CAPACIDAD";
-
+                     "WHERE a.ID = 'a01' " +
+                     "GROUP BY a.ID, a.Nombre, a.TIPO_VEHICULO, a.CAPACIDAD";
+    try (Connection con = Conexion.conectar()) {
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
 
-        while (rs.next()) {
-            String nombre = rs.getString("NOMBRE").trim();
-            String tipo = rs.getString("TIPO_VEHICULO").trim();
+        if (rs.next()) {
             int capacidad = rs.getInt("CAPACIDAD");
-            int libres = rs.getInt("libre");
+            int libres = rs.getInt("libres");
 
-            JLabel lbl = null;
+            int porcentaje = (int) ((libres * 100.0) / capacidad);
 
-            if (nombre.equalsIgnoreCase("Estudiante") && tipo.equalsIgnoreCase("Auto")) lbl = lblEstAuto;
-            else if (nombre.equalsIgnoreCase("Estudiante") && tipo.equalsIgnoreCase("Moto")) lbl = lblEstMoto;
-            else if (nombre.equalsIgnoreCase("Catedratico") && tipo.equalsIgnoreCase("Auto")) lbl = lblCatAuto;
-            else if (nombre.equalsIgnoreCase("Catedratico") && tipo.equalsIgnoreCase("Moto")) lbl = lblCatMoto;
+            // Mostrar solo un label (elige cuál usas)
+            lblEstMoto.setText("Para Motos: " + porcentaje + "% libre");
 
-            if (lbl != null) {
-                int porcentaje = (int) ((libres * 100.0) / capacidad); 
-                lbl.setText(tipo + " "+ porcentaje + "% libre");
-                if (porcentaje > 50) lbl.setBackground(Color.GREEN);
-                else if (porcentaje > 0) lbl.setBackground(Color.YELLOW);
-                else lbl.setBackground(Color.RED);
-                lbl.setOpaque(true);
-                lbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-            }
+            // Colores del semáforo
+            if (porcentaje > 50) lblEstMoto.setBackground(Color.GREEN);
+            else if (porcentaje > 0) lblEstMoto.setBackground(Color.ORANGE);
+            else lblEstMoto.setBackground(Color.RED);
+
+            lblEstMoto.setOpaque(true);
+            lblEstMoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         }
+
     } catch (SQLException e) {
         e.printStackTrace();
-        JOptionPane.showMessageDialog(this, "Error al consultar disponibilidad por áreas");
+        JOptionPane.showMessageDialog(this, "Error al consultar disponibilidad del área");
+    }
+}
+public void indicadorEstAuto(){
+    String sql = "SELECT a.Nombre, a.TIPO_VEHICULO, a.CAPACIDAD, "+
+                    "COUNT(s.ID) AS libres " +
+                    "FROM areas a "+
+                    "LEFT JOIN spot s on s.AREA = a.ID AND s.ESTADO = 'LIBRE' "+
+                    "WHERE a.ID = 'a02' "+
+                    "GROUP BY a.ID, a.Nombre, a.TIPO_VEHICULO, a.CAPACIDAD";
+    try(Connection con = Conexion.conectar();){      
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        
+        if(rs.next()){
+            int capacidad = rs.getInt("CAPACIDAD");
+            int libre = rs.getInt("libres");
+            
+            int porcentaje = (int) ((libre * 100) / capacidad);
+            lblEstAuto.setText("Para Autos: " + porcentaje + "% libre");
+
+            // Colores del semáforo
+            if (porcentaje > 50) lblEstAuto.setBackground(Color.GREEN);
+            else if (porcentaje > 0) lblEstAuto.setBackground(Color.ORANGE);
+            else lblEstAuto.setBackground(Color.RED);
+
+            lblEstAuto.setOpaque(true);
+            lblEstAuto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        }
+    } catch (SQLException e){
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al consultar disponibilidad del área");
+    }
+}
+
+public void indicadorCatMoto(){
+    String sql = "SELECT a.Nombre, a.tipo_vehiculo, a.capacidad, "+
+            "COUNT(s.ID) AS libres "+
+            "FROM areas a "+
+            "LEFT JOIN spot s on s.AREA = a.ID AND s.ESTADO = 'LIBRE' "+
+            "WHERE a.ID = 'a03' "+
+            "GROUP BY a.ID, a.Nombre, a.tipo_vehiculo, a.capacidad";
+    try(Connection con = Conexion.conectar()){
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        
+        if(rs.next()){
+            int capacidad = rs.getInt("capacidad");
+            int libre = rs.getInt("libres");
+            
+            int porcentaje = (int) ((libre * 100) / capacidad);
+            lblCatMoto.setText("Para Autos: " + porcentaje + "% libre ");
+            
+            if (porcentaje>50) lblCatMoto.setBackground(Color.GREEN);
+            else if (porcentaje>10) lblCatMoto.setBackground(Color.YELLOW);
+            else lblCatMoto.setBackground(Color.red);
+            
+            lblCatMoto.setOpaque(true);
+            lblCatMoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        }
+        
+    } catch(SQLException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al consultar disponibilidad del área");
+    }
+}
+
+public void indicadorCatAuto(){
+    String sql = "SELECT a.nombre, a.tipo_vehiculo, a.capacidad, " +
+             "COUNT(s.id) AS libres " +
+             "FROM areas a " +
+             "LEFT JOIN spot s ON s.area = a.id AND s.estado = 'LIBRE' " +
+             "WHERE a.id = 'a04' " +
+             "GROUP BY a.id, a.nombre, a.tipo_vehiculo, a.capacidad";
+    
+    try (Connection con = Conexion.conectar()){
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        
+        if (rs.next()){
+            int capacidad = rs.getInt("capacidad");
+            int libres = rs.getInt("libres");
+            
+            int porcentaje = (int) ((libres * 100)/ capacidad);
+            lblCatAuto.setText("Para Autos: "+ porcentaje + "% libre");
+            
+            if (porcentaje>50) lblCatAuto.setBackground(Color.GREEN);
+            else if (porcentaje>10) lblCatAuto.setBackground(Color.orange);
+            else lblCatAuto.setBackground(Color.red);
+            
+            lblCatAuto.setOpaque(true);
+            lblCatAuto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+           
+        }
+    } catch (SQLException e){
+        
     }
 }
               

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.Timestamp;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 public class Conexion {
@@ -166,4 +167,5 @@ public class Conexion {
             JOptionPane.showMessageDialog(null, "Error en la base de datos: "+ e.getMessage());
         }
     }
+
 }

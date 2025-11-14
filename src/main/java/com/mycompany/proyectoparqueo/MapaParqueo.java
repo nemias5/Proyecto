@@ -44,14 +44,12 @@ public MapaParqueo() {
             btn.setForeground(Color.BLACK);
 
             btn.addActionListener(e -> {
-                try (Connection con2 = Conexion.conectar()) {
-        // Consultar el estado más reciente de ese spot
-        String sql2 = "SELECT fecha_salida, ticket FROM historico WHERE spot = ? ORDER BY fecha_salida DESC LIMIT 1";
-        PreparedStatement ps2 = con2.prepareStatement(sql2);
-        ps2.setString(1, id);
-        ResultSet rs2 = ps2.executeQuery();
-
-        String mensaje = "Espacio: " + id + "\nEstado: " + estado;
+            try (Connection con2 = Conexion.conectar()){
+                String sql2 = "SELECT fecha_salida, ticket FROM historico WHERE spot = ? ORDER BY fecha_salida DESC LIMIT 1"; 
+                PreparedStatement ps2 = con2.prepareStatement(sql2); 
+                ps2.setString(1, id);
+                ResultSet rs2 = ps2.executeQuery(); 
+                String mensaje = "Espacio: " + id.toUpperCase() + "\nEstado: " + estado.toUpperCase();
 
         if (estado.equalsIgnoreCase("PENDIENTE") && rs2.next()) {
             Timestamp fechaSalida = rs2.getTimestamp("fecha_salida");

@@ -224,6 +224,12 @@ public class Salida {
                     JOptionPane.showMessageDialog(null, 
                         "Han pasado más de 2 horas desde la salida.\nEl spot se liberó automáticamente.",
                         "Spot liberado", JOptionPane.INFORMATION_MESSAGE);
+                    String sqlUpdate = "UPDATE historico SET estado = ? WHERE ticket = ?";
+                        try (PreparedStatement psUpdate = con.prepareStatement(sqlUpdate)) {
+                            psUpdate.setString(1, "CANCELADO");
+                            psUpdate.setString(2, ticket);
+                            psUpdate.executeUpdate();
+                        }
                     return;
                 } else {
                     // 🔹 Aún está dentro del rango permitido → poner spot en PENDIENTE
@@ -231,6 +237,14 @@ public class Salida {
                     JOptionPane.showMessageDialog(null, 
                         "El vehículo puede reingresar. El spot fue marcado como Ocupado.",
                         "Reingreso permitido", JOptionPane.INFORMATION_MESSAGE);
+                    
+                    String sqlUpdate = "UPDATE historico SET estado = ? WHERE ticket = ?";
+                    try(PreparedStatement psUpdate = con.prepareStatement(sqlUpdate)){
+                        psUpdate.setString(1, "ACTIVO");
+                        psUpdate.setString(2, ticket);
+                        psUpdate.executeUpdate();
+                    }
+                
                 }
             } else {
                 JOptionPane.showMessageDialog(null, 
