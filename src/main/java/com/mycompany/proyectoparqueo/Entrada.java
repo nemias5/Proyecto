@@ -1,4 +1,5 @@
 package com.mycompany.proyectoparqueo;
+import java.io.File;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.time.*;
@@ -21,9 +22,10 @@ public class Entrada {
                 JOptionPane.showMessageDialog(null, "Vehículo no encontrado");
                 return false;          
             }
+
             String tipoVehiculo = rs.getString("tipo_vehiculo");
             String tipoArea = rs.getString("tipo_area");
-            
+
             ps = con.prepareStatement("SELECT id, area FROM spot WHERE tipo_vehiculo=? AND area IN"
                     + "(SELECT id FROM areas WHERE nombre=? AND tipo_vehiculo=?)AND estado = 'LIBRE' LIMIT 1");
             ps.setString(1, tipoVehiculo);
@@ -61,7 +63,7 @@ public class Entrada {
                 }
             }
 
-            ps = con.prepareStatement("INSERT INTO historico VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            ps = con.prepareStatement("INSERT INTO historico VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             ps.setString(1, ticket);
             ps.setString(2, placa);
             ps.setString(3, area);
@@ -75,6 +77,7 @@ public class Entrada {
                 ps.setString(8, metodoPago);
             }
             ps.setDouble(9, monto);
+            ps.setString(10, "Activo");
             ps.executeUpdate();
 
             ps = con.prepareStatement("UPDATE spot SET estado = 'OCUPADO' WHERE id = ?");
@@ -83,6 +86,34 @@ public class Entrada {
 
             JOptionPane.showMessageDialog(null, "Entrada registrada correctamente.\nTicket: " + ticket);
             
+            if (modoPago.equalsIgnoreCase("flat")) {
+                String ticketInfo = 
+                    "===== TICKET DE ENTRADA =====\n" +
+                    "Ticket: " + ticket.toUpperCase() + "\n" +
+                    "Placa: " + placa.toUpperCase() + "\n" +
+                    "Área: " + area.toUpperCase() + "\n" +
+                    "Spot: " + spot.toUpperCase() + "\n" +
+                    "Modo de Pago: Flat \n" +
+                    "Monto: Q 10.00\n" +
+                    "Fecha/Hora ingreso: " + new java.util.Date() + "\n" +
+                    "Estado: ACTIVO\n" +
+                    "==============================";
+
+                JOptionPane.showMessageDialog(null, ticketInfo, "Ticket", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                String ticketInfo = 
+                    "===== TICKET DE ENTRADA =====\n" +
+                    "Ticket: " + ticket.toUpperCase() + "\n" +
+                    "Placa: " + placa.toUpperCase() + "\n" +
+                    "Área: " + area.toUpperCase() + "\n" +
+                    "Spot: " + spot.toUpperCase() + "\n" +
+                    "Modo de Pago: Variable \n" +
+                    "Fecha/Hora ingreso: " + new java.util.Date() + "\n" +
+                    "Estado: ACTIVO\n" +
+                    "==============================";
+
+                JOptionPane.showMessageDialog(null, ticketInfo, "Ticket", JOptionPane.INFORMATION_MESSAGE);
+            } 
             Interfaz regresar = new Interfaz();
             regresar.setVisible(true);
             
@@ -93,5 +124,6 @@ public class Entrada {
             JOptionPane.showMessageDialog(null, "Error al registrar entrada");
             return false;
         }
+        
     }
 }

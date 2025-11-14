@@ -34,24 +34,35 @@ public class Interfaz extends javax.swing.JFrame {
         LblCatedraticos = new javax.swing.JLabel();
         BtmMapa = new javax.swing.JButton();
         BtmReingreso = new javax.swing.JButton();
+        BtmSalir = new javax.swing.JButton();
+        LblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("MenuPrincipal");
         setBackground(java.awt.SystemColor.activeCaptionText);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setForeground(new java.awt.Color(51, 0, 0));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LblEncabezado.setFont(new java.awt.Font("Edwardian Script ITC", 1, 60)); // NOI18N
+        LblEncabezado.setForeground(new java.awt.Color(255, 255, 255));
         LblEncabezado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblEncabezado.setText("Bienvenido a Park Plus");
+        getContentPane().add(LblEncabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 17, 851, 107));
 
-        BttmEntrada.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        BttmEntrada.setBackground(new java.awt.Color(51, 0, 0));
+        BttmEntrada.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        BttmEntrada.setForeground(new java.awt.Color(255, 255, 255));
         BttmEntrada.setText("ENTRADA");
+        BttmEntrada.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.red, java.awt.Color.red, java.awt.Color.red, java.awt.Color.red));
         BttmEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BttmEntradaActionPerformed(evt);
             }
         });
+        getContentPane().add(BttmEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 145, 242, 65));
 
+        BttmSalida.setBackground(new java.awt.Color(0, 51, 51));
         BttmSalida.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         BttmSalida.setText("SALIDA");
         BttmSalida.addActionListener(new java.awt.event.ActionListener() {
@@ -59,14 +70,19 @@ public class Interfaz extends javax.swing.JFrame {
                 BttmSalidaActionPerformed(evt);
             }
         });
+        getContentPane().add(BttmSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 306, 242, 65));
 
         lblEstMoto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(lblEstMoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 171, 39));
 
         lblEstAuto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(lblEstAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(604, 205, 171, 40));
 
         lblCatAuto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(lblCatAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(403, 318, 173, 40));
 
         lblCatMoto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(lblCatMoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(613, 318, 173, 40));
 
         BtmCargarArchivo.setBackground(new java.awt.Color(51, 0, 0));
         BtmCargarArchivo.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -78,16 +94,19 @@ public class Interfaz extends javax.swing.JFrame {
                 BtmCargarArchivoActionPerformed(evt);
             }
         });
+        getContentPane().add(BtmCargarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, 187, 37));
 
         LblEstudiante.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         LblEstudiante.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblEstudiante.setText("Parqueo Para Estudiantes:");
         LblEstudiante.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(LblEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(478, 257, 242, 42));
 
         LblCatedraticos.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         LblCatedraticos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblCatedraticos.setText("Parqueo Para Catedraticos:");
         LblCatedraticos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(LblCatedraticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 145, 242, 42));
 
         BtmMapa.setText("Mapa");
         BtmMapa.addActionListener(new java.awt.event.ActionListener() {
@@ -95,92 +114,30 @@ public class Interfaz extends javax.swing.JFrame {
                 BtmMapaActionPerformed(evt);
             }
         });
+        getContentPane().add(BtmMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, 127, 43));
 
-        BtmReingreso.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        BtmReingreso.setBackground(new java.awt.Color(51, 0, 0));
+        BtmReingreso.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        BtmReingreso.setForeground(new java.awt.Color(255, 255, 255));
         BtmReingreso.setText("REINGRESO");
+        BtmReingreso.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
         BtmReingreso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtmReingresoActionPerformed(evt);
             }
         });
+        getContentPane().add(BtmReingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 222, 242, 65));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LblEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 851, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(BttmEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                                .addComponent(BtmReingreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(BttmSalida, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(BtmCargarArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(9, 9, 9)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(167, 167, 167)
-                                    .addComponent(LblCatedraticos, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(94, 94, 94)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblCatAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(37, 37, 37)
-                                            .addComponent(lblCatMoto, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblEstMoto, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(30, 30, 30)
-                                            .addComponent(lblEstAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(213, 213, 213)
-                                .addComponent(BtmMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LblEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(66, 66, 66)))))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(LblEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(BttmEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BtmReingreso, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(LblCatedraticos, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblEstMoto, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEstAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(LblEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(1, 1, 1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblCatAuto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCatMoto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(BtmMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtmCargarArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(BttmSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(45, Short.MAX_VALUE))
-        );
+        BtmSalir.setText("Cerar");
+        BtmSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtmSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtmSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 410, 140, 50));
+
+        LblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.png"))); // NOI18N
+        getContentPane().add(LblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 0, 930, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -241,19 +198,49 @@ public void actualizarSemaforo() {
     private void BttmEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BttmEntradaActionPerformed
         // TODO add your handling code here:
         Vehiculo vehiculo = new Vehiculo();
-        String placa = JOptionPane.showInputDialog("Ingrese la placa del vehículo:");
-        if (placa != null && !placa.trim().isEmpty()) {
-                if (vehiculo.verificarPlacaEnBD(placa)) {
-                    new RegistrarEntrada(placa).setVisible(true);
-                    this.dispose();
-                } else {
-                    new RegistrarNuevo(placa).setVisible(true);
-                    this.dispose();
-                }
+String placa = JOptionPane.showInputDialog("Ingrese la placa del vehículo:");
 
-    } else {
-        JOptionPane.showMessageDialog(this, "Debe ingresar una placa válida.");
+if (placa == null || placa.trim().isEmpty()) {
+    JOptionPane.showMessageDialog(this, "Debe ingresar una placa válida.");
+    return;
+}
+
+try (Connection con = Conexion.conectar()) {
+    String sql = "SELECT estado FROM historico WHERE placa = ?";
+    try (PreparedStatement ps = con.prepareStatement(sql)) {
+        ps.setString(1, placa);
+
+        try (ResultSet rs = ps.executeQuery()) {
+
+            if (rs.next()) {
+
+                String estadoActual = rs.getString("estado");
+
+                if (estadoActual != null &&
+                   (estadoActual.equalsIgnoreCase("activo") ||
+                    estadoActual.equalsIgnoreCase("pendiente"))) {
+
+                    JOptionPane.showMessageDialog(null, 
+                            "Este vehiculo ya está registrado dentro del parqueo");
+                    return;
+                }
+            }
+
+            if (vehiculo.verificarPlacaEnBD(placa)) {
+                new RegistrarEntrada(placa).setVisible(true);
+                this.dispose();
+            } else {
+                new RegistrarNuevo(placa).setVisible(true);
+                this.dispose();
+            }
+        }
     }
+} catch (SQLException e) {
+    JOptionPane.showMessageDialog(this, "Error " + e.getMessage());
+    e.printStackTrace();
+}
+
+        
     }//GEN-LAST:event_BttmEntradaActionPerformed
 
     private void BtmCargarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtmCargarArchivoActionPerformed
@@ -276,12 +263,13 @@ public void actualizarSemaforo() {
         String ticket = JOptionPane.showInputDialog("Ingrese el ticket");
         
     try (Connection con = Conexion.conectar()) {
-        String sql = "SELECT modo FROM historico WHERE ticket = ?";
+        String sql = "SELECT modo, estado FROM historico WHERE ticket = ?";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, ticket);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     String modoPago = rs.getString("modo");
+                    String estadoActual= rs.getString("estado");
 
                     if (modoPago.equalsIgnoreCase("flat")) {
                         // 🔹 Si fue modo flat, llama al método salidaFlat
@@ -291,9 +279,15 @@ public void actualizarSemaforo() {
 
                     } else if (modoPago.equalsIgnoreCase("variable")) {
                         // 🔹 Si fue modo variable, abrir la interfaz para elegir método de pago
-                        RegistrarSalida ventanaMetodo = new RegistrarSalida(ticket);
-                        ventanaMetodo.setVisible(true);
-                        this.dispose(); // opcional, si querés cerrar la ventana actual
+                        if(estadoActual.equalsIgnoreCase("activo")){
+                            RegistrarSalida ventanaMetodo = new RegistrarSalida(ticket);
+                            ventanaMetodo.setVisible(true);
+                            this.dispose(); // opcional, si querés cerrar la ventana actual     
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Este Ticket ya está pagado.");
+                            return;
+                        }
+                        
 
                     } else {
                         JOptionPane.showMessageDialog(this, "Modo de pago no reconocido en la base de datos.");
@@ -321,6 +315,11 @@ public void actualizarSemaforo() {
 
     }//GEN-LAST:event_BtmReingresoActionPerformed
 
+    private void BtmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtmSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_BtmSalirActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -347,11 +346,13 @@ public void actualizarSemaforo() {
     private javax.swing.JButton BtmCargarArchivo;
     private javax.swing.JButton BtmMapa;
     private javax.swing.JButton BtmReingreso;
+    private javax.swing.JButton BtmSalir;
     private javax.swing.JButton BttmEntrada;
     private javax.swing.JButton BttmSalida;
     private javax.swing.JLabel LblCatedraticos;
     private javax.swing.JLabel LblEncabezado;
     private javax.swing.JLabel LblEstudiante;
+    private javax.swing.JLabel LblFondo;
     private javax.swing.JLabel lblCatAuto;
     private javax.swing.JLabel lblCatMoto;
     private javax.swing.JLabel lblEstAuto;

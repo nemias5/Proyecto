@@ -41,7 +41,7 @@ public class Salida {
     public boolean salidaVariable(String ticket, String metodoPago) {
     try (Connection con = Conexion.conectar()) {
 
-        String sql = "SELECT placa, fecha_ingreso, spot FROM historico WHERE ticket = ?";
+        String sql = "SELECT placa, fecha_ingreso, spot, area, estado FROM historico WHERE ticket = ?";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ticket = ticket.trim();
             ps.setString(1, ticket);
@@ -55,6 +55,8 @@ public class Salida {
                 String placa = rs.getString("placa");
                 Timestamp fechaEntrada = rs.getTimestamp("fecha_ingreso");
                 String idSpot = rs.getString("spot");
+                String idArea = rs.getString("area");
+                String estadoActual = rs.getString("estado");
 
                 // 🔹 Calcular tiempo total
                 LocalDateTime entrada = fechaEntrada.toLocalDateTime();
@@ -109,15 +111,32 @@ public class Salida {
                 actualizarSpot(idSpot, "libre");
 
                 // 🔹 Actualizar datos en el histórico
-                String sqlUpdate = "UPDATE historico SET fecha_salida = ?, monto = ?, metodo = ? WHERE ticket = ?";
+                String sqlUpdate = "UPDATE historico SET fecha_salida = ?, monto = ?, metodo = ?, estado = ? WHERE ticket = ?";
                 try (PreparedStatement psUpdate = con.prepareStatement(sqlUpdate)) {
                     psUpdate.setTimestamp(1, Timestamp.valueOf(salida));
                     psUpdate.setDouble(2, monto);
                     psUpdate.setString(3, metodoPago);
-                    psUpdate.setString(4, ticket);
+                    psUpdate.setString(4, "PAGADO");
+                    psUpdate.setString(5, ticket);
                     psUpdate.executeUpdate();
                 }
 
+                
+                    String ticketInfo = 
+                    "===== TICKET DE ENTRADA =====\n" +
+                    "Ticket: " + ticket.toUpperCase() + "\n" +
+                    "Placa: " + placa.toUpperCase() + "\n" +
+                    "Área: " + idArea.toUpperCase() + "\n" +
+                    "Spot: " + idSpot.toUpperCase() + "\n" +
+                    "Modo de Pago: Variable \n" +
+                    "Monto: " + monto + "\n"+
+                    "Fecha/Hor entrada: "+ fechaEntrada + "\n"+
+                    "Fecha/Hora salida: " + new java.util.Date() + "\n" +
+                    "Estado: PAGADO\n" +
+                    "==============================";
+
+                JOptionPane.showMessageDialog(null, ticketInfo, "Ticket", JOptionPane.INFORMATION_MESSAGE);
+                
                 return true;
             }
         }
@@ -127,7 +146,7 @@ public class Salida {
         e.printStackTrace();
         return false;
     }
-}
+    }
 
     
     public boolean salidaFlat(String ticket) {
@@ -146,9 +165,10 @@ public class Salida {
                 String idSpot = rs.getString("spot");
 
                 // 🔹 Actualizar fecha de salida y poner el spot en pendiente
-                String sqlUpdate = "UPDATE historico SET fecha_salida = NOW() WHERE ticket = ?";
+                String sqlUpdate = "UPDATE historico SET fecha_salida = NOW(), estado = ? WHERE ticket = ?";
                 try (PreparedStatement psUpdate = con.prepareStatement(sqlUpdate)) {
-                    psUpdate.setString(1, ticket);
+                    psUpdate.setString(1, "PENDIENTE");
+                    psUpdate.setString(2, ticket);
                     psUpdate.executeUpdate();
                 }
 
@@ -171,7 +191,7 @@ public class Salida {
     try (Connection con = Conexion.conectar()) {
 
         // 1️⃣ Verificar si el ticket existe y si fue modo "FLAT"
-        String sql = "SELECT modo, spot, fecha_salida FROM historico WHERE ticket = ?";
+        String sql = "SELECT modo, spot, fecha_salida, estado FROM historico WHERE ticket = ?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, ticket);
         ResultSet rs = ps.executeQuery();
@@ -180,6 +200,7 @@ public class Salida {
             String modo = rs.getString("modo");
             String idSpot = rs.getString("spot");
             Timestamp fechaSalida = rs.getTimestamp("fecha_salida");
+            String estadoActual = rs.getString("estado");
 
             // 2️⃣ Si el modo no es FLAT, no permitir reingreso
             if (!modo.equalsIgnoreCase("FLAT")) {
@@ -187,6 +208,9 @@ public class Salida {
                     "Este ticket pertenece a un usuario con tarifa VARIABLE. No puede reingresar.",
                     "Reingreso no permitido", JOptionPane.WARNING_MESSAGE);
                 return;
+            }
+            if (estadoActual.equalsIgnoreCase("activo")){
+                
             }
 
             // 3️⃣ Si el modo es FLAT, verificar si ya pasó el tiempo límite

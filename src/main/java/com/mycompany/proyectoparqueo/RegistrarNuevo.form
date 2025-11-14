@@ -26,6 +26,11 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="BtmRegistrar" min="-2" pref="201" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                      <Component id="BtmCancelar" min="-2" pref="191" max="-2" attributes="0"/>
+                  </Group>
                   <Component id="jLabel1" min="-2" pref="401" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -40,23 +45,20 @@
                           <Component id="LblPlaca" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="BtmRegistrar" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="LblPlaca2" max="32767" attributes="0"/>
-                              <Component id="TxtNombre" max="32767" attributes="0"/>
-                              <Component id="TxtApellido" max="32767" attributes="0"/>
-                              <Component id="TxtCorreo" max="32767" attributes="0"/>
-                              <Component id="TxtTelefono" max="32767" attributes="0"/>
-                              <Component id="TxtCarne" max="32767" attributes="0"/>
-                              <Component id="ComboVehiculo" max="32767" attributes="0"/>
-                              <Component id="ComboArea" pref="193" max="32767" attributes="0"/>
-                              <Component id="TxtSaldo" max="32767" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="LblPlaca2" max="32767" attributes="0"/>
+                          <Component id="TxtNombre" max="32767" attributes="0"/>
+                          <Component id="TxtApellido" max="32767" attributes="0"/>
+                          <Component id="TxtCorreo" max="32767" attributes="0"/>
+                          <Component id="TxtTelefono" max="32767" attributes="0"/>
+                          <Component id="TxtCarne" max="32767" attributes="0"/>
+                          <Component id="ComboVehiculo" max="32767" attributes="0"/>
+                          <Component id="ComboArea" pref="193" max="32767" attributes="0"/>
+                          <Component id="TxtSaldo" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="275" max="32767" attributes="0"/>
+              <EmptySpace pref="228" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -110,9 +112,12 @@
                   <Component id="ComboArea" pref="34" max="32767" attributes="0"/>
                   <Component id="LblArea" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="BtmRegistrar" min="-2" pref="58" max="-2" attributes="0"/>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <EmptySpace pref="43" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="BtmRegistrar" pref="58" max="32767" attributes="0"/>
+                  <Component id="BtmCancelar" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -230,6 +235,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Este veh&#xed;culo no est&#xe1; registrado, favor de registrarlo:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="BtmCancelar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtmCancelarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
