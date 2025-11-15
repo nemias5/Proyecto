@@ -110,4 +110,48 @@ public class Usuario {
             return false;
         }
     }
+    
+    public void recargarSaldo(int carnet){
+        int saldo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad que desea recargar: "));
+        String sql = "UPDATE estudiante SET cuenta = cuenta + ? WHERE carne = ?";
+        try (Connection con = Conexion.conectar();
+            PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, saldo);
+            ps.setInt(2, carnet);
+            ps.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Su saldo fue actualizado correctamente.");
+            
+        } catch (SQLException e){
+            System.out.println("Error al actualizar el saldo"+ e.getMessage());
+        }
+    }
+    
+    public void mostrarDatos(int carnet){
+        String sql = "SELECT nombre, apellido, telefono, correo, cuenta, placa FROM estudiante WHERE carne = ?";
+        try(Connection con = Conexion.conectar()){
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, carnet);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                String nombre = rs.getString("nombre");
+                String apellido = rs.getString("apellido");
+                int telefono = rs.getInt("telefono");
+                String correo = rs.getString("correo");
+                double cuenta = rs.getDouble("cuenta");
+                String placa = rs.getString("placa");
+                
+                JOptionPane.showMessageDialog(null,
+                        "Nombre: "+nombre+"\n"+
+                        "Apellido: "+apellido+"\n"+
+                        "Telefono: "+telefono+"\n"+
+                        "Correo: "+correo+"\n"+
+                        "Cuenta: "+cuenta+"\n"+
+                        "Placa de Vehículo: "+placa
+                        );
+            }
+        } catch (SQLException e){
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
+    }
 }

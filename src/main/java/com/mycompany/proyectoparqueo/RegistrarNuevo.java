@@ -266,33 +266,31 @@ public class RegistrarNuevo extends javax.swing.JFrame {
 
     private void BtmRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtmRegistrarActionPerformed
         // TODO add your handling code here:
-        Usuario nuevo = new Usuario();
-        Vehiculo vehiculo = new Vehiculo();
-        if (TxtNombre.getText().trim().isEmpty() ||
-        TxtApellido.getText().trim().isEmpty() ||
-        TxtCorreo.getText().trim().isEmpty() ||
-        TxtTelefono.getText().trim().isEmpty() ||
-        TxtCarne.getText().trim().isEmpty() ||
-        TxtSaldo.getText().trim().isEmpty()) {
-
-        JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
-        return;
-    }
-        nuevo.setTelefono(Integer.parseInt(TxtTelefono.getText().trim()));
-        nuevo.setCarnet(Integer.parseInt(TxtCarne.getText().trim()));
-        nuevo.setSaldo(Double.parseDouble(TxtSaldo.getText().trim()));
-        nuevo.setPlaca(placa);
-        vehiculo.setPlaca(placa);
-        vehiculo.setTipoVehiculo(ComboVehiculo.getSelectedItem().toString().trim());
-        vehiculo.setTipoArea(ComboArea.getSelectedItem().toString().trim());
-
-    if (nuevo.registrarAlumno(nuevo) && vehiculo.registrarVehiculo(vehiculo)) {
-        JOptionPane.showMessageDialog(this, "Registro exitoso.");
-        new RegistrarEntrada(vehiculo.getPlaca()).setVisible(true);
-        this.dispose();
-    } else {
-        JOptionPane.showMessageDialog(this, "No se pudo registrar.");
-    }
+        Usuario nuevo = new Usuario(); 
+        Vehiculo vehiculo = new Vehiculo(); 
+        nuevo.setNombre(TxtNombre.getText().trim()); 
+        nuevo.setApellido(TxtApellido.getText().trim()); 
+        nuevo.setCorreo(TxtCorreo.getText().trim());
+        nuevo.setTelefono(Integer.parseInt(TxtTelefono.getText().trim())); 
+        nuevo.setCarnet(Integer.parseInt(TxtCarne.getText().trim())); 
+        nuevo.setSaldo(Double.parseDouble(TxtSaldo.getText().trim())); 
+        nuevo.setPlaca(placa); vehiculo.setPlaca(placa); 
+        vehiculo.setTipoVehiculo(ComboVehiculo.getSelectedItem().toString().trim()); 
+        vehiculo.setTipoArea(ComboArea.getSelectedItem().toString().trim()); 
+        
+        if (nuevo.getNombre().isEmpty() || nuevo.getApellido().isEmpty() || 
+                nuevo.getCorreo().isEmpty() || nuevo.getTelefono() == 0 ){ 
+            JOptionPane.showMessageDialog(this, "Debe completar todos los campos."); 
+            return; 
+        } 
+        
+        if (nuevo.registrarAlumno(nuevo) && vehiculo.registrarVehiculo(vehiculo)) { 
+            JOptionPane.showMessageDialog(this, "Registro exitoso."); 
+            new RegistrarEntrada(vehiculo.getPlaca()).setVisible(true); 
+            this.dispose(); 
+        } else { 
+            JOptionPane.showMessageDialog(this, "No se pudo registrar."); 
+        }
         
     }//GEN-LAST:event_BtmRegistrarActionPerformed
 

@@ -5,11 +5,11 @@ import java.awt.Image;
 import javax.swing.JOptionPane;
 
 
-public class ProyectoParqueo {
+public class Login {
     public static void main(String[] args) {
         String contraseña;
         ImageIcon original = new ImageIcon(
-            ProyectoParqueo.class.getResource("/imagenes/icon.png")
+            Login.class.getResource("/imagenes/icon.png")
         );
 
         Image img = original.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);

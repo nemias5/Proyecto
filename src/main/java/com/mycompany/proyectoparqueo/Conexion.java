@@ -41,12 +41,12 @@ public class Conexion {
                     ps.setString(6, datos[5]);
                     ps.setDouble(7, Double.parseDouble(datos[6]));
                     ps.executeUpdate();
-                    AccessLog.registrar("admin", "Carga de Archivos Exitosa");
+                    
                 }
             }
 
             JOptionPane.showMessageDialog(null, "Datos insertados correctamente.");
-
+            AccessLog.registrar("admin", "Carga de Archivos Exitosa");
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e.getMessage());
         } catch (SQLException e) {
@@ -70,12 +70,12 @@ public class Conexion {
                     ps.setString(2, datos[1]);
                     ps.setString(3, datos[2]);
                     ps.executeUpdate();
-                    AccessLog.registrar("admin", "Carga de Archivos Exitosa");
+                    
                 }
             }
 
             JOptionPane.showMessageDialog(null, "Datos insertados correctamente.");
-
+            AccessLog.registrar("admin", "Carga de Archivos Exitosa");
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e.getMessage());
         } catch (SQLException e) {
@@ -100,11 +100,11 @@ public class Conexion {
                     ps.setString(3, datos[2]);
                     ps.setString(4, datos[3]);
                     ps.executeUpdate();
-                    AccessLog.registrar("admin", "Carga de Archivos Exitosa");
+                    
                 }
             }
             JOptionPane.showMessageDialog(null, "Datos insertados correctamente.");
-
+            AccessLog.registrar("admin", "Carga de Archivos Exitosa");
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e.getMessage());
         } catch (SQLException e) {
@@ -129,10 +129,11 @@ public class Conexion {
                         ps.setInt(3, Integer.parseInt(datos[2]));
                         ps.setString(4, datos[3]);
                         ps.executeUpdate();
-                        AccessLog.registrar("admin", "Carga de Archivos Exitosa");
+                        
                     }
             }
             JOptionPane.showMessageDialog(null, "Datos insertados correctamente. ");
+            AccessLog.registrar("admin", "Carga de Archivos Exitosa");
         }catch(IOException e){
             JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e.getMessage());
         } catch(SQLException e){
@@ -161,10 +162,11 @@ public class Conexion {
                     ps.setString(8, datos[7]);
                     ps.setDouble(9, Double.parseDouble(datos[8]));
                     ps.executeUpdate();
-                    AccessLog.registrar("admin", "Carga de Archivos Exitosa");
+                    
                 }
             }
             JOptionPane.showMessageDialog(null, "Datos insertados correctamente. ");
+            AccessLog.registrar("admin", "Carga de Archivos Exitosa");
         } catch(IOException e){
             JOptionPane.showMessageDialog(null, "Error al leer el archivo: "+ e.getMessage());
         } catch(SQLException e){

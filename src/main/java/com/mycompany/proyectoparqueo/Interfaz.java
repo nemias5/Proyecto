@@ -39,6 +39,8 @@ public class Interfaz extends javax.swing.JFrame {
         BtmReingreso = new javax.swing.JButton();
         BtmSalir = new javax.swing.JButton();
         BtmReporte = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         LblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -101,7 +103,7 @@ public class Interfaz extends javax.swing.JFrame {
                 BtmCargarArchivoActionPerformed(evt);
             }
         });
-        getContentPane().add(BtmCargarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, 240, 50));
+        getContentPane().add(BtmCargarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 170, 50));
 
         LblEstudiante.setBackground(new java.awt.Color(51, 0, 0));
         LblEstudiante.setFont(new java.awt.Font("Cooper Black", 0, 20)); // NOI18N
@@ -129,7 +131,7 @@ public class Interfaz extends javax.swing.JFrame {
                 BtmMapaActionPerformed(evt);
             }
         });
-        getContentPane().add(BtmMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 130, 50));
+        getContentPane().add(BtmMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, 130, 50));
 
         BtmReingreso.setBackground(new java.awt.Color(51, 0, 0));
         BtmReingreso.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
@@ -145,7 +147,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         BtmSalir.setBackground(new java.awt.Color(255, 255, 255));
         BtmSalir.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
-        BtmSalir.setForeground(new java.awt.Color(51, 0, 0));
+        BtmSalir.setForeground(java.awt.Color.red);
         BtmSalir.setText("Salir del Programa");
         BtmSalir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 0, 0), new java.awt.Color(51, 0, 0), new java.awt.Color(51, 0, 0), new java.awt.Color(51, 0, 0)));
         BtmSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +167,29 @@ public class Interfaz extends javax.swing.JFrame {
                 BtmReporteActionPerformed(evt);
             }
         });
-        getContentPane().add(BtmReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 420, 220, 50));
+        getContentPane().add(BtmReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, 180, 50));
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 0, 0));
+        jButton1.setText("Recargar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, 130, 50));
+
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(51, 0, 0));
+        jButton2.setText("Mostrar Info");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 420, 170, 50));
 
         LblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.png"))); // NOI18N
         getContentPane().add(LblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 0, 930, 510));
@@ -269,7 +293,7 @@ public void indicadorCatMoto(){
             int libre = rs.getInt("libres");
             
             int porcentaje = (int) ((libre * 100) / capacidad);
-            lblCatMoto.setText("Para Autos: " + porcentaje + "% libre ");
+            lblCatMoto.setText("Para Motos: " + porcentaje + "% libre ");
             
             if (porcentaje>50) lblCatMoto.setBackground(Color.GREEN);
             else if (porcentaje>10) lblCatMoto.setBackground(Color.YELLOW);
@@ -444,6 +468,21 @@ try (Connection con = Conexion.conectar()) {
         this.dispose();
     }//GEN-LAST:event_BtmReporteActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int carnet = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su Carnet: "));
+        Usuario saldo = new Usuario();
+        saldo.recargarSaldo(carnet);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int carnet = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su Carnet: "));
+        Usuario mostrar = new Usuario();
+        mostrar.mostrarDatos(carnet);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -478,6 +517,8 @@ try (Connection con = Conexion.conectar()) {
     private javax.swing.JLabel LblEncabezado;
     private javax.swing.JLabel LblEstudiante;
     private javax.swing.JLabel LblFondo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel lblCatAuto;
     private javax.swing.JLabel lblCatMoto;
     private javax.swing.JLabel lblEstAuto;
