@@ -40,25 +40,22 @@ public class Salida {
     }
     public boolean salidaVariable(String ticket, String metodoPago) {
     try (Connection con = Conexion.conectar()) {
-
         String sql = "SELECT placa, fecha_ingreso, spot, area, estado FROM historico WHERE ticket = ?";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ticket = ticket.trim();
             ps.setString(1, ticket);
-
             try (ResultSet rs = ps.executeQuery()) {
                 if (!rs.next()) {
                     JOptionPane.showMessageDialog(null, "No existe el ticket ingresado");
                     return false;
                 }
-
                 String placa = rs.getString("placa");
                 Timestamp fechaEntrada = rs.getTimestamp("fecha_ingreso");
                 String idSpot = rs.getString("spot");
                 String idArea = rs.getString("area");
                 String estadoActual = rs.getString("estado");
 
-                // 🔹 Calcular tiempo total
+                // Calcular tiempo
                 LocalDateTime entrada = fechaEntrada.toLocalDateTime();
                 LocalDateTime salida = LocalDateTime.now();
 
@@ -66,14 +63,13 @@ public class Salida {
                 double horas = minutosTotales / 60.0;
                 double monto = 0;
 
-                // 🔹 Calcular monto según tiempo
+                // Calcular monto
                 int horasCompletas = (int) horas;
                 boolean tieneFraccion = (horas - horasCompletas) > 0;
 
                 monto = horasCompletas * 5.0;
                 if (tieneFraccion) monto += 2.0;
 
-                // 🔹 Acciones según método de pago
                 if (metodoPago.equalsIgnoreCase("efectivo") || metodoPago.equalsIgnoreCase("tarjeta")) {
                     JOptionPane.showMessageDialog(null, "Total a pagar: Q" + monto);
 
@@ -89,13 +85,13 @@ public class Salida {
                                     JOptionPane.showMessageDialog(null, "Saldo insuficiente en cuenta");
                                     return false;
                                 } else {
-                                    // Descontar el monto
                                     String sqlUpdateCuenta = "UPDATE estudiante SET cuenta = cuenta - ? WHERE placa = ?";
                                     try (PreparedStatement psUpdateCuenta = con.prepareStatement(sqlUpdateCuenta)) {
                                         psUpdateCuenta.setDouble(1, monto);
                                         psUpdateCuenta.setString(2, placa);
                                         
                                         psUpdateCuenta.executeUpdate();
+                                        AccessLog.registrar("admin", "Salida");
                                     }
                                     JOptionPane.showMessageDialog(null, "Pago realizado desde cuenta. Monto descontado: Q" + monto);
                                 }
@@ -107,10 +103,8 @@ public class Salida {
                     return false;
                 }
 
-                // 🔹 Liberar el espacio
                 actualizarSpot(idSpot, "libre");
 
-                // 🔹 Actualizar datos en el histórico
                 String sqlUpdate = "UPDATE historico SET fecha_salida = ?, monto = ?, metodo = ?, estado = ? WHERE ticket = ?";
                 try (PreparedStatement psUpdate = con.prepareStatement(sqlUpdate)) {
                     psUpdate.setTimestamp(1, Timestamp.valueOf(salida));
@@ -121,7 +115,6 @@ public class Salida {
                     psUpdate.executeUpdate();
                 }
 
-                
                     String ticketInfo = 
                     "===== TICKET DE ENTRADA =====\n" +
                     "Ticket: " + ticket.toUpperCase() + "\n" +
@@ -140,6 +133,7 @@ public class Salida {
                 return true;
             }
         }
+        
 
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "Error al registrar salida: " + e.getMessage());
@@ -148,11 +142,9 @@ public class Salida {
     }
     }
 
-    
     public boolean salidaFlat(String ticket) {
     try (Connection con = Conexion.conectar()) {
 
-        // 🔹 Obtener el spot del ticket
         String sql = "SELECT spot FROM historico WHERE ticket = ?";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, ticket.trim());
@@ -164,15 +156,15 @@ public class Salida {
 
                 String idSpot = rs.getString("spot");
 
-                // 🔹 Actualizar fecha de salida y poner el spot en pendiente
                 String sqlUpdate = "UPDATE historico SET fecha_salida = NOW(), estado = ? WHERE ticket = ?";
                 try (PreparedStatement psUpdate = con.prepareStatement(sqlUpdate)) {
                     psUpdate.setString(1, "PENDIENTE");
                     psUpdate.setString(2, ticket);
                     psUpdate.executeUpdate();
+                    AccessLog.registrar("admin", "Salida");
+
                 }
 
-                // 🔹 Cambiar el estado del spot a pendiente
                 actualizarSpot(idSpot, "pendiente");
 
                 JOptionPane.showMessageDialog(null,
@@ -187,83 +179,4 @@ public class Salida {
         return false;
     }
 }
-    public void reingresoFlat(String ticket) {
-    try (Connection con = Conexion.conectar()) {
-
-        // 1️⃣ Verificar si el ticket existe y si fue modo "FLAT"
-        String sql = "SELECT modo, spot, fecha_salida, estado FROM historico WHERE ticket = ?";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, ticket);
-        ResultSet rs = ps.executeQuery();
-
-        if (rs.next()) {
-            String modo = rs.getString("modo");
-            String idSpot = rs.getString("spot");
-            Timestamp fechaSalida = rs.getTimestamp("fecha_salida");
-            String estadoActual = rs.getString("estado");
-
-            // 2️⃣ Si el modo no es FLAT, no permitir reingreso
-            if (!modo.equalsIgnoreCase("FLAT")) {
-                JOptionPane.showMessageDialog(null, 
-                    "Este ticket pertenece a un usuario con tarifa VARIABLE. No puede reingresar.",
-                    "Reingreso no permitido", JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-            if (estadoActual.equalsIgnoreCase("activo")){
-                
-            }
-
-            // 3️⃣ Si el modo es FLAT, verificar si ya pasó el tiempo límite
-            if (fechaSalida != null) {
-                LocalDateTime salida = fechaSalida.toLocalDateTime();
-                long horas = ChronoUnit.HOURS.between(salida, LocalDateTime.now());
-
-                if (horas >= 2) {
-                    // 🔹 Han pasado más de 2 horas → liberar spot
-                    actualizarSpot(idSpot, "LIBRE");
-                    JOptionPane.showMessageDialog(null, 
-                        "Han pasado más de 2 horas desde la salida.\nEl spot se liberó automáticamente.",
-                        "Spot liberado", JOptionPane.INFORMATION_MESSAGE);
-                    String sqlUpdate = "UPDATE historico SET estado = ? WHERE ticket = ?";
-                        try (PreparedStatement psUpdate = con.prepareStatement(sqlUpdate)) {
-                            psUpdate.setString(1, "CANCELADO");
-                            psUpdate.setString(2, ticket);
-                            psUpdate.executeUpdate();
-                        }
-                    return;
-                } else {
-                    // 🔹 Aún está dentro del rango permitido → poner spot en PENDIENTE
-                    actualizarSpot(idSpot, "OCUPADO");
-                    JOptionPane.showMessageDialog(null, 
-                        "El vehículo puede reingresar. El spot fue marcado como Ocupado.",
-                        "Reingreso permitido", JOptionPane.INFORMATION_MESSAGE);
-                    
-                    String sqlUpdate = "UPDATE historico SET estado = ? WHERE ticket = ?";
-                    try(PreparedStatement psUpdate = con.prepareStatement(sqlUpdate)){
-                        psUpdate.setString(1, "ACTIVO");
-                        psUpdate.setString(2, ticket);
-                        psUpdate.executeUpdate();
-                    }
-                
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, 
-                    "El ticket no tiene una fecha de salida registrada.",
-                    "Error de datos", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, 
-                "No se encontró ningún registro con el ticket ingresado.",
-                "Ticket no encontrado", JOptionPane.ERROR_MESSAGE);
-        }
-
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, 
-            "Error al procesar el reingreso: " + e.getMessage(),
-            "Error SQL", JOptionPane.ERROR_MESSAGE);
-    }
-}
-
-
-    
 }

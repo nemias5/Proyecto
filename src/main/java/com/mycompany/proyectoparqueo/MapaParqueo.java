@@ -20,12 +20,12 @@ public MapaParqueo() {
     JPanel panelMapa = new JPanel(new GridLayout(15, 20, 10, 10));
 
     try (Connection con = Conexion.conectar()) {
-        String sql = "SELECT id, tipo_vehiculo, estado FROM spot ORDER BY id ASC";
+        String sql = "SELECT id, area, estado FROM spot ORDER BY id ASC";
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
 
         while (rs.next()) {
-            String vehiculo = rs.getString("tipo_vehiculo");
+            String vehiculo = rs.getString("area");
             String id = rs.getString("id");
             String estado = rs.getString("estado");
 
@@ -45,24 +45,38 @@ public MapaParqueo() {
             btn.setForeground(Color.BLACK);
 
             btn.addActionListener(e -> {
+            
 
     try (Connection con2 = Conexion.conectar()) {
-        //1️⃣ Obtener datos actuales del spot desde historico
         String sql2 = "SELECT placa, ticket, fecha_ingreso, fecha_salida " +
                        "FROM historico WHERE spot = ? " +
                        "ORDER BY fecha_ingreso DESC LIMIT 1";
 
         PreparedStatement ps2 = con2.prepareStatement(sql2);
         ps2.setString(1, id);
-
         ResultSet rs2 = ps2.executeQuery();
 
-        // Mensaje básico
-        String mensaje = "Espacio: " + id.toUpperCase() +
-                         "\nEstado: " + estado.toUpperCase();
-                         
+        String tipoVehiculo;
+        switch (vehiculo.toLowerCase()) {
+            case "a01":
+                tipoVehiculo = "Moto/Estudiante";
+                break;
+            case "a02":
+                tipoVehiculo = "Auto/Estudiante";
+                break;
+            case "a03":
+                tipoVehiculo = "Moto/Catedratico";
+                break;
+            case "a04":
+                tipoVehiculo = "Auto/Catedratico"; // <-- Corrige si aplica
+                break;
+            default:
+                tipoVehiculo = "Desconocido";
+        }
+        String mensaje = "ID: " + id.toUpperCase() +
+                         "\nEstado: " + estado.toUpperCase()+
+                         "\nEspacio De: "+ tipoVehiculo.toUpperCase();
 
-        // 2️⃣ Si está libre → no hay datos
         if (estado.equalsIgnoreCase("LIBRE")) {
             mensaje += "\n\n--- SIN VEHÍCULO ---";
 
@@ -70,7 +84,6 @@ public MapaParqueo() {
             return;
         }
 
-        // 3️⃣ Si hay registro
         if (!rs2.next()) {
             mensaje += "\n\n(No hay datos actuales del vehículo)";
             JOptionPane.showMessageDialog(null, mensaje);
@@ -82,7 +95,6 @@ public MapaParqueo() {
         Timestamp fechaEntradaTS = rs2.getTimestamp("fecha_ingreso");
         LocalDateTime fechaEntrada = fechaEntradaTS.toLocalDateTime();
 
-        // 4️⃣ Obtener datos del estudiante
         String sqlEst = "SELECT carne, nombre, apellido, telefono " +
                         "FROM estudiante WHERE placa = ?";
 
@@ -102,7 +114,6 @@ public MapaParqueo() {
             telefono = rsEst.getString("telefono");
         }
 
-        // 5️⃣ Datos de tabla vehiculo → tipo de usuario
         String sqlVeh = "SELECT tipo_area FROM vehiculos WHERE placa = ?";
         PreparedStatement psVeh = con2.prepareStatement(sqlVeh);
         psVeh.setString(1, placa);
@@ -114,7 +125,6 @@ public MapaParqueo() {
             tipoUsuario = rsVeh.getString("tipo_area"); // estudiante o catedratico
         }
 
-        // 6️⃣ Calcular tiempo restante si está en PENDIENTE
         String tiempo = "";
         if (estado.equalsIgnoreCase("PENDIENTE")) {
 
@@ -146,7 +156,6 @@ public MapaParqueo() {
                    "\nApellido: " + apellido +
                    "\nTeléfono: " + telefono +
                    "\nPlaca: " + placa.toUpperCase() +
-                   "\nTipo usuario: " + tipoUsuario +
                    "\nEntrada: " + fechaEntrada +
                    "\nTiempo restante: " + tiempo;
 

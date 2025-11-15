@@ -104,9 +104,7 @@ public class Usuario {
                 psU.setDouble(7, alumno.getSaldo());
                 psU.executeUpdate();
             }
-
             return true;
-
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al registrar: " + e.getMessage());
             return false;

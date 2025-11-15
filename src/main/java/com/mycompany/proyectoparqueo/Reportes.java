@@ -77,7 +77,7 @@ public class Reportes {
         writer.write("TOTAL GENERAL: " + totalGeneral + "\n");
 
         writer.flush();
-
+        AccessLog.registrar("admin", "ReporteCreado");
         JOptionPane.showMessageDialog(null,
                 "Archivo generado correctamente:\n" + rutaArchivo,
                 "Cierre del Día",

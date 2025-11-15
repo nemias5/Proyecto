@@ -25,11 +25,10 @@ public class Conexion {
     public void leerArchivoEstudiante(String rutaArchivo) {
         String linea;
         try (Connection conn = Conexion.conectar();
-             BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
+            BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
             br.readLine();
             String sql = "INSERT INTO estudiante (carne, nombre, apellido, telefono, correo, placa, cuenta) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(sql);
-
             while ((linea = br.readLine()) != null) {
                 String[] datos = linea.split(",");
 
@@ -42,6 +41,7 @@ public class Conexion {
                     ps.setString(6, datos[5]);
                     ps.setDouble(7, Double.parseDouble(datos[6]));
                     ps.executeUpdate();
+                    AccessLog.registrar("admin", "Carga de Archivos Exitosa");
                 }
             }
 
@@ -70,6 +70,7 @@ public class Conexion {
                     ps.setString(2, datos[1]);
                     ps.setString(3, datos[2]);
                     ps.executeUpdate();
+                    AccessLog.registrar("admin", "Carga de Archivos Exitosa");
                 }
             }
 
@@ -99,6 +100,7 @@ public class Conexion {
                     ps.setString(3, datos[2]);
                     ps.setString(4, datos[3]);
                     ps.executeUpdate();
+                    AccessLog.registrar("admin", "Carga de Archivos Exitosa");
                 }
             }
             JOptionPane.showMessageDialog(null, "Datos insertados correctamente.");
@@ -127,6 +129,7 @@ public class Conexion {
                         ps.setInt(3, Integer.parseInt(datos[2]));
                         ps.setString(4, datos[3]);
                         ps.executeUpdate();
+                        AccessLog.registrar("admin", "Carga de Archivos Exitosa");
                     }
             }
             JOptionPane.showMessageDialog(null, "Datos insertados correctamente. ");
@@ -158,6 +161,7 @@ public class Conexion {
                     ps.setString(8, datos[7]);
                     ps.setDouble(9, Double.parseDouble(datos[8]));
                     ps.executeUpdate();
+                    AccessLog.registrar("admin", "Carga de Archivos Exitosa");
                 }
             }
             JOptionPane.showMessageDialog(null, "Datos insertados correctamente. ");

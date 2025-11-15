@@ -268,9 +268,16 @@ public class RegistrarNuevo extends javax.swing.JFrame {
         // TODO add your handling code here:
         Usuario nuevo = new Usuario();
         Vehiculo vehiculo = new Vehiculo();
-        nuevo.setNombre(TxtNombre.getText().trim());
-        nuevo.setApellido(TxtApellido.getText().trim());
-        nuevo.setCorreo(TxtCorreo.getText().trim());
+        if (TxtNombre.getText().trim().isEmpty() ||
+        TxtApellido.getText().trim().isEmpty() ||
+        TxtCorreo.getText().trim().isEmpty() ||
+        TxtTelefono.getText().trim().isEmpty() ||
+        TxtCarne.getText().trim().isEmpty() ||
+        TxtSaldo.getText().trim().isEmpty()) {
+
+        JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
+        return;
+    }
         nuevo.setTelefono(Integer.parseInt(TxtTelefono.getText().trim()));
         nuevo.setCarnet(Integer.parseInt(TxtCarne.getText().trim()));
         nuevo.setSaldo(Double.parseDouble(TxtSaldo.getText().trim()));
@@ -278,16 +285,7 @@ public class RegistrarNuevo extends javax.swing.JFrame {
         vehiculo.setPlaca(placa);
         vehiculo.setTipoVehiculo(ComboVehiculo.getSelectedItem().toString().trim());
         vehiculo.setTipoArea(ComboArea.getSelectedItem().toString().trim());
-    
-    if (nuevo.getNombre().isEmpty() || nuevo.getApellido().isEmpty() ||
-        nuevo.getCorreo().isEmpty() || vehiculo.getPlaca().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
-        return;
-    }
-    if (nuevo.existeCarne(String.valueOf(nuevo.getCarnet()))) {
-        JOptionPane.showMessageDialog(this, "El carné ya existe.");
-        return;
-    }
+
     if (nuevo.registrarAlumno(nuevo) && vehiculo.registrarVehiculo(vehiculo)) {
         JOptionPane.showMessageDialog(this, "Registro exitoso.");
         new RegistrarEntrada(vehiculo.getPlaca()).setVisible(true);

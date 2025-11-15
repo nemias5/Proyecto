@@ -29,6 +29,7 @@ public class ProyectoParqueo {
                 System.exit(0);
             }
             if ("123".equals(contraseña)) {
+                AccessLog.registrar("admin", "InicioDeSesión");
                 Interfaz ejemplo = new Interfaz();
                 ejemplo.setVisible(true);
                 break;

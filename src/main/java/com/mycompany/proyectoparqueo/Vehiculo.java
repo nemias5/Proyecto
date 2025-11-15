@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.proyectoparqueo;
 
 import java.sql.Connection;
@@ -71,9 +67,7 @@ public class Vehiculo{
                 psV.setString(3, vehiculo.getTipoArea());
                 psV.executeUpdate();
             }
-
             return true;
-
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al registrar: " + e.getMessage());
             return false;

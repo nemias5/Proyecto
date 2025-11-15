@@ -3,6 +3,7 @@ import java.io.File;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.time.*;
+import java.time.temporal.ChronoUnit;
 
 public class Entrada {
     public boolean entrada(String placa, String modoPago, String metodoPago){
@@ -83,7 +84,9 @@ public class Entrada {
             ps = con.prepareStatement("UPDATE spot SET estado = 'OCUPADO' WHERE id = ?");
             ps.setString(1, spot);
             ps.executeUpdate();
-
+            
+            AccessLog.registrar("admin", "Entrada");
+            
             JOptionPane.showMessageDialog(null, "Entrada registrada correctamente.\nTicket: " + ticket);
             
             if (modoPago.equalsIgnoreCase("flat")) {
@@ -116,9 +119,7 @@ public class Entrada {
             } 
             Interfaz regresar = new Interfaz();
             regresar.setVisible(true);
-            
             return true;
-            
         } catch (SQLException e){
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error al registrar entrada");
@@ -126,4 +127,81 @@ public class Entrada {
         }
         
     }
+    
+    public void reingresoFlat(String ticket) {
+    try (Connection con = Conexion.conectar()) {
+
+        String sql = "SELECT modo, spot, fecha_salida, estado FROM historico WHERE ticket = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, ticket);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            String modo = rs.getString("modo");
+            String idSpot = rs.getString("spot");
+            Timestamp fechaSalida = rs.getTimestamp("fecha_salida");
+            String estadoActual = rs.getString("estado");
+
+            if (!modo.equalsIgnoreCase("FLAT")) {
+                JOptionPane.showMessageDialog(null, 
+                    "Este ticket pertenece a un usuario con tarifa VARIABLE. No puede reingresar.",
+                    "Reingreso no permitido", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (estadoActual.equalsIgnoreCase("activo")){
+                
+            }
+
+            if (fechaSalida != null) {
+                LocalDateTime salida = fechaSalida.toLocalDateTime();
+                long horas = ChronoUnit.HOURS.between(salida, LocalDateTime.now());
+
+                if (horas >= 2) {
+                    Salida actualizar = new Salida();
+                    actualizar.actualizarSpot(idSpot, "LIBRE");
+                    JOptionPane.showMessageDialog(null, 
+                        "Han pasado más de 2 horas desde la salida.\nEl spot se liberó automáticamente.",
+                        "Spot liberado", JOptionPane.INFORMATION_MESSAGE);
+                    String sqlUpdate = "UPDATE historico SET estado = ? WHERE ticket = ?";
+                        try (PreparedStatement psUpdate = con.prepareStatement(sqlUpdate)) {
+                            psUpdate.setString(1, "CANCELADO");
+                            psUpdate.setString(2, ticket);
+                            psUpdate.executeUpdate();
+                            AccessLog.registrar("admin", "ReingresoFallido");
+
+                        }
+                    return;
+                } else {
+                    Salida actualizar = new Salida();
+                    actualizar.actualizarSpot(idSpot, "OCUPADO");
+                    JOptionPane.showMessageDialog(null, 
+                        "El vehículo puede reingresar. El spot fue marcado como Ocupado.",
+                        "Reingreso permitido", JOptionPane.INFORMATION_MESSAGE);
+                    
+                    String sqlUpdate = "UPDATE historico SET estado = ? WHERE ticket = ?";
+                    try(PreparedStatement psUpdate = con.prepareStatement(sqlUpdate)){
+                        psUpdate.setString(1, "ACTIVO");
+                        psUpdate.setString(2, ticket);
+                        psUpdate.executeUpdate();
+                        AccessLog.registrar("admin", "ReingresoExitoso");
+                    }
+                
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, 
+                    "El ticket no tiene una fecha de salida registrada.",
+                    "Error de datos", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, 
+                "No se encontró ningún registro con el ticket ingresado.",
+                "Ticket no encontrado", JOptionPane.ERROR_MESSAGE);
+        }
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, 
+            "Error al procesar el reingreso: " + e.getMessage(),
+            "Error SQL", JOptionPane.ERROR_MESSAGE);
+    }
+}
 }

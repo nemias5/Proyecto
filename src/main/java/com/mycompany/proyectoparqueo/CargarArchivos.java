@@ -1,5 +1,4 @@
 package com.mycompany.proyectoparqueo;
-
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,14 +6,12 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class CargarArchivos extends javax.swing.JFrame {
-    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CargarArchivos.class.getName());
 
     public CargarArchivos() {
         initComponents();
         setLocationRelativeTo(null);
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -311,6 +308,7 @@ public class CargarArchivos extends javax.swing.JFrame {
         String rutaArchivo = TxtArchivoHistórico.getText();
         Conexion leer = new Conexion();
         leer.leerArchivoHistorico(rutaArchivo);
+        tablaHistorica(rutaArchivo);
     }//GEN-LAST:event_BtmCargarHistoricosActionPerformed
 
     private void TxtArchivoEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtArchivoEstudiantesActionPerformed
@@ -318,81 +316,100 @@ public class CargarArchivos extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtArchivoEstudiantesActionPerformed
 
     public void tablaEstudiante(String rutaArchivo) {
-    DefaultTableModel modelo = (DefaultTableModel) TablaEstudiantes.getModel();
-    modelo.setRowCount(0);
-    try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
-        br.readLine();
-        String linea;
-        while ((linea = br.readLine()) != null) {
-            String[] datos = linea.split(",");
-            if (datos.length >= 7) {
-                modelo.addRow(new Object[]{
+        DefaultTableModel modelo = (DefaultTableModel) TablaEstudiantes.getModel();
+        modelo.setRowCount(0);
+        try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
+            br.readLine();
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(",");
+                if (datos.length >= 7) {
+                    modelo.addRow(new Object[]{
                         datos[0], datos[1], datos[2],
                         datos[3], datos[4], datos[5], datos[6]
-                });
+                    });
+                }
             }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la tabla: " + e.getMessage());
         }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error al cargar la tabla: " + e.getMessage());
     }
-}
     public void tablaSpots(String rutaArchivo) {
-    DefaultTableModel modelo = (DefaultTableModel) TablaSpots.getModel();
-    modelo.setRowCount(0);
-    try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
-        br.readLine();
-        String linea;
-        while ((linea = br.readLine()) != null) {
-            String[] datos = linea.split(",");
-            if (datos.length >= 4) {
-                modelo.addRow(new Object[]{
+        DefaultTableModel modelo = (DefaultTableModel) TablaSpots.getModel();
+        modelo.setRowCount(0);
+        try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
+            br.readLine();
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(",");
+                if (datos.length >= 4) {
+                    modelo.addRow(new Object[]{
                         datos[0], datos[1], datos[2],
                         datos[3]
-                });
+                    });
+                }
             }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la tabla: " + e.getMessage());
         }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error al cargar la tabla: " + e.getMessage());
     }
-}
     public void tablaAreas(String rutaArchivo) {
-    DefaultTableModel modelo = (DefaultTableModel) TablaAreas.getModel();
-    modelo.setRowCount(0);
-    try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
-        br.readLine();
-        String linea;
-        while ((linea = br.readLine()) != null) {
-            String[] datos = linea.split(",");
-            if (datos.length >= 4) {
-                modelo.addRow(new Object[]{
+        DefaultTableModel modelo = (DefaultTableModel) TablaAreas.getModel();
+        modelo.setRowCount(0);
+        try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
+            br.readLine();
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(",");
+                if (datos.length >= 4) {
+                    modelo.addRow(new Object[]{
                         datos[0], datos[1], datos[2],
                         datos[3]
-                });
+                    });
+                }
             }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la tabla: " + e.getMessage());
         }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error al cargar la tabla: " + e.getMessage());
     }
-}
     public void tablaVehiculos(String rutaArchivo) {
-    DefaultTableModel modelo = (DefaultTableModel) TablaVehiculos.getModel();
-    modelo.setRowCount(0);
-    try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
-        br.readLine();
-        String linea;
-        while ((linea = br.readLine()) != null) {
-            String[] datos = linea.split(",");
-            if (datos.length >= 3) {
-                modelo.addRow(new Object[]{
+        DefaultTableModel modelo = (DefaultTableModel) TablaVehiculos.getModel();
+        modelo.setRowCount(0);
+        try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
+            br.readLine();
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(",");
+                if (datos.length >= 3) {
+                    modelo.addRow(new Object[]{
                         datos[0], datos[1], datos[2],
-                });
+                    });
+                }
             }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la tabla: " + e.getMessage());
         }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error al cargar la tabla: " + e.getMessage());
     }
-}
     
+    public void tablaHistorica(String rutaArchivo){
+        DefaultTableModel modelo = (DefaultTableModel) TablaHistorica.getModel();
+        modelo.setRowCount(0);
+        try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))){
+            br.readLine();
+            String linea;
+            while((linea = br.readLine()) !=null){
+                String[] datos = linea.split(",");
+                if (datos.length>=10){
+                    modelo.addRow(new Object[]{
+                        datos[0], datos[1], datos[2], datos[3], datos[4], datos[5],
+                        datos[6], datos[7], datos[8], datos[9],
+                    });
+                }
+            }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al cargar la tabla: "+e.getMessage());
+        }
+    }
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> new CargarArchivos().setVisible(true));
     }

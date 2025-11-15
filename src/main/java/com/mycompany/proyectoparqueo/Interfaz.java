@@ -333,9 +333,7 @@ try (Connection con = Conexion.conectar()) {
         ps.setString(1, placa);
         try (ResultSet rs = ps.executeQuery()) {
             if (rs.next()) {
-
                 String estadoActual = rs.getString("estado");
-
                 if (estadoActual != null &&
                    (estadoActual.equalsIgnoreCase("activo") ||
                     estadoActual.equalsIgnoreCase("pendiente"))) {
@@ -397,23 +395,17 @@ try (Connection con = Conexion.conectar()) {
                     String estadoActual= rs.getString("estado");
 
                     if (modoPago.equalsIgnoreCase("flat")) {
-                        // 🔹 Si fue modo flat, llama al método salidaFlat
                         Salida salida = new Salida();
                         salida.salidaFlat(ticket); 
-                        // Puedes cambiar el nombre del método según el que ya tengas implementado
-
                     } else if (modoPago.equalsIgnoreCase("variable")) {
-                        // 🔹 Si fue modo variable, abrir la interfaz para elegir método de pago
                         if(estadoActual.equalsIgnoreCase("activo")){
                             RegistrarSalida ventanaMetodo = new RegistrarSalida(ticket);
                             ventanaMetodo.setVisible(true);
-                            this.dispose(); // opcional, si querés cerrar la ventana actual     
+                            this.dispose();    
                         } else {
                             JOptionPane.showMessageDialog(null, "Este Ticket ya está pagado.");
                             return;
-                        }
-                        
-
+                        }      
                     }
                 }
             }
@@ -429,7 +421,7 @@ try (Connection con = Conexion.conectar()) {
         // TODO add your handling code here:
         
         String ticket = JOptionPane.showInputDialog("Ingrese el número de ticket:");
-        Salida reingreso = new Salida();
+        Entrada reingreso = new Entrada();
         reingreso.reingresoFlat(ticket);
         if (ticket == null || ticket.trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un ticket válido. ");
@@ -440,7 +432,9 @@ try (Connection con = Conexion.conectar()) {
 
     private void BtmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtmSalirActionPerformed
         // TODO add your handling code here:
+        AccessLog.registrar("admin", "CierreDeSesión");
         System.exit(0);
+        
     }//GEN-LAST:event_BtmSalirActionPerformed
 
     private void BtmReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtmReporteActionPerformed

@@ -32,6 +32,11 @@ public class ElegirMetodoDePago extends javax.swing.JFrame {
         ComboMetodoDePago.setForeground(new java.awt.Color(51, 0, 0));
         ComboMetodoDePago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Tarjeta", "Cuenta" }));
         ComboMetodoDePago.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.red, java.awt.Color.red, java.awt.Color.red, java.awt.Color.red));
+        ComboMetodoDePago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboMetodoDePagoActionPerformed(evt);
+            }
+        });
         getContentPane().add(ComboMetodoDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 220, 60));
 
         BtmRegistrar.setBackground(new java.awt.Color(255, 255, 255));
@@ -83,6 +88,10 @@ public class ElegirMetodoDePago extends javax.swing.JFrame {
         regresar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BtmRegresarActionPerformed
+
+    private void ComboMetodoDePagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboMetodoDePagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboMetodoDePagoActionPerformed
 
     public static void main(String args[]) {
        
