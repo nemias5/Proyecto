@@ -73,15 +73,21 @@ public class CargarArchivos extends javax.swing.JFrame {
         LblArchivoAreas.setText("Cargar Archivos de Areas: ");
         getContentPane().add(LblArchivoAreas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 210, 41));
 
+        TxtArchivoEstudiantes.setBackground(new java.awt.Color(255, 255, 255));
         TxtArchivoEstudiantes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtArchivoEstudiantesActionPerformed(evt);
             }
         });
         getContentPane().add(TxtArchivoEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 252, 41));
+
+        TxtArchivoVehiculos.setBackground(new java.awt.Color(204, 204, 204));
         getContentPane().add(TxtArchivoVehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 252, 41));
+
+        TxtArchivoAreas.setBackground(new java.awt.Color(204, 204, 204));
         getContentPane().add(TxtArchivoAreas, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 252, 41));
 
+        TxtArchivoSpots.setBackground(new java.awt.Color(153, 153, 153));
         TxtArchivoSpots.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtArchivoSpotsActionPerformed(evt);
@@ -149,6 +155,8 @@ public class CargarArchivos extends javax.swing.JFrame {
         LblArchivoHistorico.setForeground(new java.awt.Color(255, 255, 255));
         LblArchivoHistorico.setText("Cargar Archivos Históricos:");
         getContentPane().add(LblArchivoHistorico, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 220, 43));
+
+        TxtArchivoHistórico.setBackground(new java.awt.Color(153, 153, 153));
         getContentPane().add(TxtArchivoHistórico, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 252, 43));
 
         BtmCargarHistoricos.setBackground(new java.awt.Color(51, 0, 0));
@@ -166,6 +174,8 @@ public class CargarArchivos extends javax.swing.JFrame {
         jScrollPane2.setForeground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
 
+        TablaEstudiantes.setBackground(new java.awt.Color(255, 255, 255));
+        TablaEstudiantes.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         TablaEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -179,6 +189,8 @@ public class CargarArchivos extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 770, 60));
 
+        TablaSpots.setBackground(new java.awt.Color(255, 255, 255));
+        TablaSpots.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         TablaSpots.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -194,6 +206,8 @@ public class CargarArchivos extends javax.swing.JFrame {
 
         getContentPane().add(TablaSpot, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 270, 70));
 
+        TablaAreas.setBackground(new java.awt.Color(255, 255, 255));
+        TablaAreas.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         TablaAreas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -209,6 +223,8 @@ public class CargarArchivos extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 240, 70));
 
+        TablaVehiculos.setBackground(new java.awt.Color(255, 255, 255));
+        TablaVehiculos.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         TablaVehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -224,6 +240,8 @@ public class CargarArchivos extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(536, 291, 250, 70));
 
+        TablaHistorica.setBackground(new java.awt.Color(255, 255, 255));
+        TablaHistorica.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         TablaHistorica.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
@@ -239,7 +257,7 @@ public class CargarArchivos extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 371, 780, 60));
 
-        LblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondocarga.png"))); // NOI18N
+        LblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondocarga - copia.png"))); // NOI18N
         getContentPane().add(LblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 440));
 
         pack();

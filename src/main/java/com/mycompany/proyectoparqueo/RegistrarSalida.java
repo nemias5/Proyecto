@@ -19,49 +19,41 @@ public class RegistrarSalida extends javax.swing.JFrame {
         ComboMetodoDePago = new javax.swing.JComboBox<>();
         LblMetodoPago = new javax.swing.JLabel();
         BtmRegistrar = new javax.swing.JButton();
+        LblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        ComboMetodoDePago.setBackground(new java.awt.Color(51, 0, 0));
+        ComboMetodoDePago.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        ComboMetodoDePago.setForeground(new java.awt.Color(255, 255, 255));
         ComboMetodoDePago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Tarjeta", "Cuenta" }));
+        ComboMetodoDePago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboMetodoDePagoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ComboMetodoDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 208, 61));
 
-        LblMetodoPago.setText("Elegir el metodo de pago");
+        LblMetodoPago.setFont(new java.awt.Font("Edwardian Script ITC", 1, 40)); // NOI18N
+        LblMetodoPago.setForeground(new java.awt.Color(255, 255, 255));
+        LblMetodoPago.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblMetodoPago.setText("Elegir el metodo de pago:");
+        getContentPane().add(LblMetodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 21, 463, 56));
 
+        BtmRegistrar.setBackground(new java.awt.Color(51, 0, 0));
+        BtmRegistrar.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        BtmRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         BtmRegistrar.setText("Registrar");
         BtmRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtmRegistrarActionPerformed(evt);
             }
         });
+        getContentPane().add(BtmRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 212, 208, 60));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ComboMetodoDePago, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(112, 112, 112))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(LblMetodoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(BtmRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(93, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(LblMetodoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(ComboMetodoDePago, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(BtmRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
-        );
+        LblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondocarga.png"))); // NOI18N
+        getContentPane().add(LblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, -8, 480, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -76,12 +68,17 @@ public class RegistrarSalida extends javax.swing.JFrame {
         regresar.setVisible(true);
     }//GEN-LAST:event_BtmRegistrarActionPerformed
 
+    private void ComboMetodoDePagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboMetodoDePagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboMetodoDePagoActionPerformed
+
     public static void main(String args[]) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtmRegistrar;
     private javax.swing.JComboBox<String> ComboMetodoDePago;
+    private javax.swing.JLabel LblFondo;
     private javax.swing.JLabel LblMetodoPago;
     // End of variables declaration//GEN-END:variables
 }

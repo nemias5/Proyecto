@@ -13,7 +13,7 @@ public class RegistrarNuevo extends javax.swing.JFrame {
         this.placa = placa;
         System.out.println("Placa recibida en RegistrarNuevo: " + placa);
         setLocationRelativeTo(null);
-        LblPlaca2.setText(placa);
+        LblPlaca2.setText(placa.toUpperCase());
     }
 
 
@@ -42,160 +42,159 @@ public class RegistrarNuevo extends javax.swing.JFrame {
         BtmRegistrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         BtmCancelar = new javax.swing.JButton();
+        LblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        LblPlaca.setBackground(new java.awt.Color(0, 0, 0));
+        LblPlaca.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        LblPlaca.setForeground(new java.awt.Color(0, 0, 0));
         LblPlaca.setText("Placa:");
+        getContentPane().add(LblPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 82, 182, 37));
 
+        LblNombre.setBackground(new java.awt.Color(0, 0, 0));
+        LblNombre.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        LblNombre.setForeground(new java.awt.Color(0, 0, 0));
         LblNombre.setText("Nombre:");
+        getContentPane().add(LblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 125, 182, 35));
 
+        LblApellido.setBackground(new java.awt.Color(0, 0, 0));
+        LblApellido.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        LblApellido.setForeground(new java.awt.Color(0, 0, 0));
         LblApellido.setText("Apellido:");
+        getContentPane().add(LblApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 166, 182, 34));
 
+        LblCorreo.setBackground(new java.awt.Color(0, 0, 0));
+        LblCorreo.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        LblCorreo.setForeground(new java.awt.Color(0, 0, 0));
         LblCorreo.setText("Correo Electrónico:");
+        getContentPane().add(LblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 206, -1, 36));
 
+        LblTelefono.setBackground(new java.awt.Color(0, 0, 0));
+        LblTelefono.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        LblTelefono.setForeground(new java.awt.Color(0, 0, 0));
         LblTelefono.setText("No. de Telefono:");
+        getContentPane().add(LblTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 248, 182, 32));
 
+        LblCarne.setBackground(new java.awt.Color(0, 0, 0));
+        LblCarne.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        LblCarne.setForeground(new java.awt.Color(0, 0, 0));
         LblCarne.setText("Carne:");
+        getContentPane().add(LblCarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 287, 182, 31));
 
+        LblSaldo.setBackground(new java.awt.Color(0, 0, 0));
+        LblSaldo.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        LblSaldo.setForeground(new java.awt.Color(0, 0, 0));
         LblSaldo.setText("Saldo en Cuenta:");
+        getContentPane().add(LblSaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 324, 182, 33));
 
+        LblVehiculo.setBackground(new java.awt.Color(0, 0, 0));
+        LblVehiculo.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        LblVehiculo.setForeground(new java.awt.Color(0, 0, 0));
         LblVehiculo.setText("Tipo de Vehiculo:");
+        getContentPane().add(LblVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 363, 182, 33));
 
-        LblArea.setText("Estudiante/Catedratico:");
+        LblArea.setBackground(new java.awt.Color(0, 0, 0));
+        LblArea.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        LblArea.setForeground(new java.awt.Color(0, 0, 0));
+        LblArea.setText("Tipo de Área:");
+        getContentPane().add(LblArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 402, 182, 34));
 
+        LblPlaca2.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        LblPlaca2.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(LblPlaca2, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 82, 193, 37));
+
+        TxtNombre.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        TxtNombre.setForeground(new java.awt.Color(51, 0, 0));
         TxtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtNombreActionPerformed(evt);
             }
         });
+        getContentPane().add(TxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 125, 193, 35));
 
+        TxtApellido.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        TxtApellido.setForeground(new java.awt.Color(51, 0, 0));
         TxtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtApellidoActionPerformed(evt);
             }
         });
+        getContentPane().add(TxtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 166, 193, 34));
 
+        TxtCorreo.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        TxtCorreo.setForeground(new java.awt.Color(51, 0, 0));
         TxtCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtCorreoActionPerformed(evt);
             }
         });
+        getContentPane().add(TxtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 206, 193, 36));
 
+        TxtTelefono.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        TxtTelefono.setForeground(new java.awt.Color(51, 0, 0));
         TxtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtTelefonoActionPerformed(evt);
             }
         });
+        getContentPane().add(TxtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 248, 193, -1));
 
+        TxtCarne.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        TxtCarne.setForeground(new java.awt.Color(51, 0, 0));
         TxtCarne.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtCarneActionPerformed(evt);
             }
         });
+        getContentPane().add(TxtCarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 286, 193, 31));
 
+        ComboVehiculo.setBackground(new java.awt.Color(51, 0, 0));
+        ComboVehiculo.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        ComboVehiculo.setForeground(new java.awt.Color(255, 255, 255));
         ComboVehiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moto", "Auto" }));
+        getContentPane().add(ComboVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 363, 193, 33));
 
+        ComboArea.setBackground(new java.awt.Color(51, 0, 0));
+        ComboArea.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        ComboArea.setForeground(new java.awt.Color(255, 255, 255));
         ComboArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante ", "Catedratico" }));
+        getContentPane().add(ComboArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 402, 193, 34));
 
+        TxtSaldo.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        TxtSaldo.setForeground(new java.awt.Color(51, 0, 0));
+        getContentPane().add(TxtSaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 324, 193, 33));
+
+        BtmRegistrar.setBackground(new java.awt.Color(51, 0, 0));
+        BtmRegistrar.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        BtmRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         BtmRegistrar.setText("Registrar");
         BtmRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtmRegistrarActionPerformed(evt);
             }
         });
+        getContentPane().add(BtmRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 480, 201, 58));
 
-        jLabel1.setText("Este vehículo no está registrado, favor de registrarlo:");
+        jLabel1.setFont(new java.awt.Font("Edwardian Script ITC", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Este Vehículo no está Registrado:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 417, 58));
 
+        BtmCancelar.setBackground(new java.awt.Color(51, 0, 0));
+        BtmCancelar.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        BtmCancelar.setForeground(new java.awt.Color(255, 255, 255));
         BtmCancelar.setText("Cancelar");
         BtmCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtmCancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(BtmCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 480, 191, 58));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(BtmRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
-                        .addComponent(BtmCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(LblArea, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                            .addComponent(LblVehiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(LblSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(LblCarne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(LblTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(LblCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(LblApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(LblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(LblPlaca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(LblPlaca2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TxtNombre)
-                            .addComponent(TxtApellido)
-                            .addComponent(TxtCorreo)
-                            .addComponent(TxtTelefono)
-                            .addComponent(TxtCarne)
-                            .addComponent(ComboVehiculo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ComboArea, 0, 193, Short.MAX_VALUE)
-                            .addComponent(TxtSaldo))))
-                .addContainerGap(228, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LblPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LblPlaca2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TxtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                    .addComponent(LblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TxtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                    .addComponent(LblApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TxtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(LblCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblCarne, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TxtCarne, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(LblSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TxtSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ComboVehiculo, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addComponent(LblVehiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ComboArea, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                    .addComponent(LblArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BtmRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                    .addComponent(BtmCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        LblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.png"))); // NOI18N
+        getContentPane().add(LblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, 500, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -321,6 +320,7 @@ public class RegistrarNuevo extends javax.swing.JFrame {
     private javax.swing.JLabel LblArea;
     private javax.swing.JLabel LblCarne;
     private javax.swing.JLabel LblCorreo;
+    private javax.swing.JLabel LblFondo;
     private javax.swing.JLabel LblNombre;
     private javax.swing.JLabel LblPlaca;
     private javax.swing.JLabel LblPlaca2;

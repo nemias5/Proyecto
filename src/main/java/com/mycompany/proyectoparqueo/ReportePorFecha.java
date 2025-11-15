@@ -39,67 +39,71 @@ public class ReportePorFecha extends javax.swing.JFrame {
         BtmElegirFecha = new javax.swing.JButton();
         dateChooser = new com.toedter.calendar.JDateChooser();
         BtmRegresar = new javax.swing.JButton();
+        LblReporteHoy = new javax.swing.JLabel();
+        LblReporteFecha = new javax.swing.JLabel();
+        LblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BtmHoy.setText("HOY");
+        BtmHoy.setBackground(new java.awt.Color(255, 255, 255));
+        BtmHoy.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        BtmHoy.setForeground(new java.awt.Color(51, 0, 0));
+        BtmHoy.setText("Crear Reporte");
         BtmHoy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtmHoyActionPerformed(evt);
             }
         });
+        getContentPane().add(BtmHoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 170, 49));
 
-        LblFecha.setText("Ingresar Fecha");
+        LblFecha.setBackground(new java.awt.Color(255, 255, 255));
+        LblFecha.setFont(new java.awt.Font("Edwardian Script ITC", 1, 30)); // NOI18N
+        LblFecha.setForeground(new java.awt.Color(255, 255, 255));
+        LblFecha.setText("Ingresar Fecha:");
+        getContentPane().add(LblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 180, 170, 47));
 
+        BtmElegirFecha.setBackground(new java.awt.Color(255, 255, 255));
+        BtmElegirFecha.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        BtmElegirFecha.setForeground(new java.awt.Color(51, 0, 0));
         BtmElegirFecha.setText("Crear Reporte");
         BtmElegirFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtmElegirFechaActionPerformed(evt);
             }
         });
+        getContentPane().add(BtmElegirFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 170, 47));
 
+        dateChooser.setBackground(new java.awt.Color(51, 0, 0));
+        dateChooser.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(dateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 143, 47));
+
+        BtmRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        BtmRegresar.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
+        BtmRegresar.setForeground(new java.awt.Color(51, 0, 0));
         BtmRegresar.setText("Regresar");
         BtmRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtmRegresarActionPerformed(evt);
             }
         });
+        getContentPane().add(BtmRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 132, 49));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BtmHoy, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(LblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)
-                                .addComponent(BtmElegirFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(BtmRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(BtmHoy, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtmElegirFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(BtmRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
-        );
+        LblReporteHoy.setBackground(new java.awt.Color(255, 255, 255));
+        LblReporteHoy.setFont(new java.awt.Font("Edwardian Script ITC", 1, 30)); // NOI18N
+        LblReporteHoy.setForeground(new java.awt.Color(255, 255, 255));
+        LblReporteHoy.setText("Generar Reporte del Día:");
+        getContentPane().add(LblReporteHoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 260, 50));
+
+        LblReporteFecha.setBackground(new java.awt.Color(255, 255, 255));
+        LblReporteFecha.setFont(new java.awt.Font("Edwardian Script ITC", 1, 30)); // NOI18N
+        LblReporteFecha.setForeground(new java.awt.Color(255, 255, 255));
+        LblReporteFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblReporteFecha.setText("Generar Reporte de una Fecha Diferente:");
+        getContentPane().add(LblReporteFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 510, 60));
+
+        LblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo5.png"))); // NOI18N
+        getContentPane().add(LblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-9, -6, 530, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -158,6 +162,9 @@ public class ReportePorFecha extends javax.swing.JFrame {
     private javax.swing.JButton BtmHoy;
     private javax.swing.JButton BtmRegresar;
     private javax.swing.JLabel LblFecha;
+    private javax.swing.JLabel LblFondo;
+    private javax.swing.JLabel LblReporteFecha;
+    private javax.swing.JLabel LblReporteHoy;
     private com.toedter.calendar.JDateChooser dateChooser;
     // End of variables declaration//GEN-END:variables
 }

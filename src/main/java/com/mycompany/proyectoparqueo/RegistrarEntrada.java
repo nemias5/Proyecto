@@ -10,105 +10,61 @@ public class RegistrarEntrada extends javax.swing.JFrame {
         this.placa = placa;
         System.out.println("Placa recibida en RegistrarNuevo: " + placa);
         setLocationRelativeTo(null);
-        
-        javax.swing.SpinnerDateModel modeloHora = new javax.swing.SpinnerDateModel();
-        SpinHora.setModel(modeloHora);
-        javax.swing.JSpinner.DateEditor editorHora = new javax.swing.JSpinner.DateEditor(SpinHora, "HH:mm");
-        SpinHora.setEditor(editorHora);
+
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Date = new com.toedter.calendar.JDateChooser();
-        SpinHora = new javax.swing.JSpinner();
         ComboModoDePago = new javax.swing.JComboBox<>();
-        LblFecha = new javax.swing.JLabel();
-        LblHora = new javax.swing.JLabel();
-        LblModoDePago = new javax.swing.JLabel();
         LblTitulo = new javax.swing.JLabel();
         BtmSiguiente = new javax.swing.JButton();
         BtmCancelar = new javax.swing.JButton();
+        LblEncabezado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        ComboModoDePago.setBackground(new java.awt.Color(255, 255, 255));
+        ComboModoDePago.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        ComboModoDePago.setForeground(new java.awt.Color(51, 0, 0));
         ComboModoDePago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Flat", "Variable" }));
+        ComboModoDePago.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.red, java.awt.Color.red, java.awt.Color.red, java.awt.Color.red));
+        getContentPane().add(ComboModoDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 220, 60));
 
-        LblFecha.setText("Fecha de Entrada:");
+        LblTitulo.setFont(new java.awt.Font("Edwardian Script ITC", 1, 40)); // NOI18N
+        LblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        LblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblTitulo.setText("Elija el Modo de Pago");
+        getContentPane().add(LblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 440, 73));
 
-        LblHora.setText("Hora de Entrada:");
-
-        LblModoDePago.setText("Modo de Pago: ");
-
-        LblTitulo.setText("Por favor, ingrese los siguientes datos:");
-
+        BtmSiguiente.setBackground(new java.awt.Color(255, 255, 255));
+        BtmSiguiente.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        BtmSiguiente.setForeground(new java.awt.Color(51, 0, 0));
         BtmSiguiente.setText("Siguiente");
+        BtmSiguiente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.red, java.awt.Color.red, java.awt.Color.red, java.awt.Color.red));
         BtmSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtmSiguienteActionPerformed(evt);
             }
         });
+        getContentPane().add(BtmSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 190, 52));
 
+        BtmCancelar.setBackground(new java.awt.Color(255, 255, 255));
+        BtmCancelar.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        BtmCancelar.setForeground(new java.awt.Color(51, 0, 0));
         BtmCancelar.setText("Cancelar");
+        BtmCancelar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.red, java.awt.Color.red, java.awt.Color.red, java.awt.Color.red));
         BtmCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtmCancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(BtmCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 206, 52));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(BtmSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(BtmCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LblHora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(LblModoDePago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(LblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 19, Short.MAX_VALUE)))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(ComboModoDePago, 0, 274, Short.MAX_VALUE)
-                                    .addComponent(SpinHora)
-                                    .addComponent(Date, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE))))
-                        .addGap(217, 217, 217))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(LblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(LblFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Date, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(LblHora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(SpinHora, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(LblModoDePago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ComboModoDePago, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-                .addGap(92, 92, 92)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BtmSiguiente, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
-                    .addComponent(BtmCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(84, Short.MAX_VALUE))
-        );
+        LblEncabezado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo4.png"))); // NOI18N
+        getContentPane().add(LblEncabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(-44, 0, 630, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -145,11 +101,7 @@ public class RegistrarEntrada extends javax.swing.JFrame {
     private javax.swing.JButton BtmCancelar;
     private javax.swing.JButton BtmSiguiente;
     private javax.swing.JComboBox<String> ComboModoDePago;
-    private com.toedter.calendar.JDateChooser Date;
-    private javax.swing.JLabel LblFecha;
-    private javax.swing.JLabel LblHora;
-    private javax.swing.JLabel LblModoDePago;
+    private javax.swing.JLabel LblEncabezado;
     private javax.swing.JLabel LblTitulo;
-    private javax.swing.JSpinner SpinHora;
     // End of variables declaration//GEN-END:variables
 }
