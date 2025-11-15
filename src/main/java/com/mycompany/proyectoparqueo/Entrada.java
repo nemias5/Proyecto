@@ -141,7 +141,6 @@ public class Entrada {
             String idSpot = rs.getString("spot");
             Timestamp fechaSalida = rs.getTimestamp("fecha_salida");
             String estadoActual = rs.getString("estado");
-
             if (!modo.equalsIgnoreCase("FLAT")) {
                 JOptionPane.showMessageDialog(null, 
                     "Este ticket pertenece a un usuario con tarifa VARIABLE. No puede reingresar.",

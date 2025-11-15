@@ -265,7 +265,7 @@ public class CargarArchivos extends javax.swing.JFrame {
         String rutaArchivo = TxtArchivoEstudiantes.getText();
         Conexion leer = new Conexion();
         leer.leerArchivoEstudiante(rutaArchivo);
-        tablaEstudiante(rutaArchivo);        
+        tablaEstudiante(rutaArchivo);      
     }//GEN-LAST:event_BtmCargarEstudianteActionPerformed
 
     private void BtmCargarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtmCargarVehiculoActionPerformed

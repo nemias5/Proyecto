@@ -1,4 +1,3 @@
-
 package com.mycompany.proyectoparqueo;
 import java.awt.Color;
 import java.sql.Connection;

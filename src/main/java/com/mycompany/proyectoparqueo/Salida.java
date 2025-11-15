@@ -61,14 +61,14 @@ public class Salida {
 
                 long minutosTotales = ChronoUnit.MINUTES.between(entrada, salida);
                 double horas = minutosTotales / 60.0;
-                double monto = 0;
+                double monto = 5;
 
                 // Calcular monto
                 int horasCompletas = (int) horas;
                 boolean tieneFraccion = (horas - horasCompletas) > 0;
 
-                monto = horasCompletas * 5.0;
-                if (tieneFraccion) monto += 2.0;
+                monto = horasCompletas * 10.0;
+                if (tieneFraccion) monto += 5.0;
 
                 if (metodoPago.equalsIgnoreCase("efectivo") || metodoPago.equalsIgnoreCase("tarjeta")) {
                     JOptionPane.showMessageDialog(null, "Total a pagar: Q" + monto);
